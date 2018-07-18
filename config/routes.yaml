@@ -1,0 +1,94 @@
+/:
+    path: /
+    controller: App\Controller\ImagesController::Doudounes
+
+Doudounes:
+    path: /Doudounes
+    controller: App\Controller\ImagesController::Doudounes
+
+FursWomen:
+    path: /Furs/Women
+    controller: App\Controller\ImagesController::fursWomen
+
+UpdateFursWomen:
+    path: /Furs/Women/Update
+    controller: App\Controller\DownloadController::updateFurWomen
+
+UpdateDoudounes:
+    path: /Doudounes/Update
+    controller: App\Controller\DownloadController::updateDoudounes
+
+UpdatePulls:
+    path: /Pulls/Update
+    controller: App\Controller\DownloadController::updatePulls
+
+
+
+
+
+FursMen:
+    path: /Furs/Men
+    controller: App\Controller\ImagesController::fursMen
+
+Pulls:
+    path: /Pulls
+    controller: App\Controller\ImagesController::Pulls
+
+Wax:
+    path: /Wax
+    controller: App\Controller\ImagesController::Wax
+
+
+
+
+
+
+pullsDownload:
+    path: /Pulls/download
+    controller: App\Controller\DownloadController::downloadPulls
+
+pullsUpload:
+    path: /Pulls/upload
+    controller: App\Controller\DownloadController::uploadPulls
+    methods: [POST]
+
+fursDownloadWomen:
+    path: /Furs/Women/download
+    controller: App\Controller\DownloadController::downloadFursWomen
+
+fursDownloadMen:
+    path: /Furs/Men/download
+    controller: App\Controller\DownloadController::downloadFursMen
+
+fursUploadWomen:
+    path: /Furs/Women/upload
+    controller: App\Controller\DownloadController::uploadFursWomen
+    methods: [POST]
+
+fursUploadMen:
+    path: /Furs/Men/upload
+    controller: App\Controller\DownloadController::uploadFursMen
+    methods: [POST]
+
+doudounesDownload:
+    path: /Doudounes/download
+    controller: App\Controller\DownloadController::downloadDoudounes
+
+doudounesUpload:
+    path: /Doudounes/upload
+    controller: App\Controller\DownloadController::uploadDoudounes
+    methods: [POST]
+
+waxDownload:
+    path: /Wax/download
+    controller: App\Controller\DownloadController::downloadWax
+
+waxUpload:
+    path: /Wax/upload
+    controller: App\Controller\DownloadController::uploadWax
+    methods: [POST]
+
+
+cropButton:
+    path: /cropButton
+    controller: App\Controller\DownloadController::cropButton

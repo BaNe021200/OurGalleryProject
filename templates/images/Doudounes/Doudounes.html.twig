@@ -1,0 +1,62 @@
+{% extends "base.html.twig" %}
+{% block title %}Doudounes{% endblock %}
+
+{% block stylesheet %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('zoombox/zoombox.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/rounded.css') }}">
+   {#<link rel="stylesheet" href="{{ asset('css/images.css') }}">#}
+{% endblock stylesheet %}
+
+{% block updateButtonLink %}{{ path('UpdateDoudounes') }}{% endblock updateButtonLink %}
+
+
+
+{% block test %}
+
+{% endblock test %}
+
+
+{% block downloadButtonLink %}{{ path('doudounesDownload') }}{% endblock %}
+
+{% block secondarytxt %}Doudounes{% endblock secondarytxt %}
+
+
+{% block item0001Active %}active{% endblock item0001Active %}
+
+
+{% block src %}src="img/coverDoudounes.jpg"{% endblock src %}
+
+
+{% block thumbnails %}
+
+    {% for thumb in thumbs %}
+
+        <div  class="col-lg-3 col-md-4 col-xs-6  thumbs" >
+
+            <a href="{% block furslink %}{% endblock furslink %}img/{% block item %}doudounes{% endblock item %}/{{ thumb.basename }}" rel="zoombox[{% block zoomboxVille %}doudounes{% endblock zoomboxVille %}]">
+                <img id="thumb" class="img-fluid img-thumbnail thumbs " src="{% block furslinkThumbs %}{% endblock furslinkThumbs %}{{ thumb.dirname }}{{ thumb.basename }}" alt="">
+            </a>
+
+        </div>
+{% endfor %}
+{% endblock thumbnails %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% block javaScript %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('zoombox/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('zoombox/zoombox.js') }}"></script>
+
+{% endblock javaScript %}
