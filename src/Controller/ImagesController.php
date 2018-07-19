@@ -130,6 +130,14 @@ class ImagesController extends Controller
         return ($this->item('Pulls'));
     }
 
+    public function Creapulka()
+    {
+
+        return ($this->item('Creapulka'));
+    }
+
+
+
     public function FursWomen()
     {
         return ($this->item('fursWomen'));

@@ -10,29 +10,18 @@ FursWomen:
     path: /Furs/Women
     controller: App\Controller\ImagesController::fursWomen
 
-UpdateFursWomen:
-    path: /Furs/Women/Update
-    controller: App\Controller\DownloadController::updateFurWomen
-
-UpdateDoudounes:
-    path: /Doudounes/Update
-    controller: App\Controller\DownloadController::updateDoudounes
-
-UpdatePulls:
-    path: /Pulls/Update
-    controller: App\Controller\DownloadController::updatePulls
-
-
-
-
-
 FursMen:
     path: /Furs/Men
     controller: App\Controller\ImagesController::fursMen
 
 Pulls:
-    path: /Pulls
+    path: /Pulls/Pulls
     controller: App\Controller\ImagesController::Pulls
+
+Creapulka:
+    path: /Pull/Creapulka
+    controller: App\Controller\ImagesController::Creapulka
+
 
 Wax:
     path: /Wax
@@ -44,13 +33,23 @@ Wax:
 
 
 pullsDownload:
-    path: /Pulls/download
+    path: /Pulls/Pulls/download
     controller: App\Controller\DownloadController::downloadPulls
 
 pullsUpload:
-    path: /Pulls/upload
+    path: /Pulls/Pulls/upload
     controller: App\Controller\DownloadController::uploadPulls
     methods: [POST]
+
+creapulkaDownload:
+    path: /Pulls/Creapulka/download
+    controller: App\Controller\DownloadController::downloadCreapulka
+
+creapulkaUpload:
+    path: /Pulls/Creapulka/upload
+    controller: App\Controller\DownloadController::uploadCreapulka
+    methods: [POST]
+
 
 fursDownloadWomen:
     path: /Furs/Women/download
@@ -87,6 +86,26 @@ waxUpload:
     path: /Wax/upload
     controller: App\Controller\DownloadController::uploadWax
     methods: [POST]
+
+
+UpdateFursWomen:
+    path: /Furs/Women/Update
+    controller: App\Controller\DownloadController::updateFurWomen
+
+UpdateDoudounes:
+    path: /Doudounes/Update
+    controller: App\Controller\DownloadController::updateDoudounes
+
+UpdatePulls:
+    path: /Pulls/Pulls/Update
+    controller: App\Controller\DownloadController::updatePulls
+
+UpdateCreapulka:
+    path: /Pulls/Creapulka/Update
+    controller: App\Controller\DownloadController::updateCreapulka
+
+
+
 
 
 cropButton:

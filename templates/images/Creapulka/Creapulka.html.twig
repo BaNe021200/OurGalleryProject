@@ -1,0 +1,16 @@
+{% extends "images/Pulls/Pulls.html.twig" %}
+
+{% block title %}Pulls{% endblock title %}
+{% block updateButtonLink %}{{ path('UpdateCreapulka') }}{% endblock %}
+
+{% block secondarytxt %}Creapulka{% endblock secondarytxt  %}
+
+{% block item0001Active %}{% endblock %}
+{% block item0003Active %}active{% endblock %}
+
+
+
+{% block downloadButtonLink %}{{ path('creapulkaDownload') }}{% endblock downloadButtonLink %}
+{% block item  %}creapulka{% endblock item %}
+
+{% block src %}src="../img/coverCreapulka_{{ bg_ramdom }}.jpg"{% endblock src %}
