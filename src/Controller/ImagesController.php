@@ -110,7 +110,9 @@ class ImagesController extends Controller
     {
 
         $dir = 'img/'.$item.'/thumbs/';
-        $bg_ramdom = mt_rand(1, 2);
+        $bg_ramdom2 = mt_rand(1, 2);
+        $bg_ramdom6 = mt_rand(1, 6);
+
         $thumbs = $this->getDoctrine()
             ->getRepository(Thumbnails::class)
             ->findByDirname($dir);
@@ -119,7 +121,8 @@ class ImagesController extends Controller
         return $this->render('images/'.$item.'/'.$item.'.html.twig',[
 
             'thumbs' => $thumbs,
-            'bg_ramdom' => $bg_ramdom,
+            'bg_ramdom' => $bg_ramdom2,
+            'bg_ramdom6' =>$bg_ramdom6,
 
         ]);
     }

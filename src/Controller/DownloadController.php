@@ -66,6 +66,7 @@ class DownloadController extends Controller
             }
             //$this->thumbNails(500,300,$item);
             $this->cropImagesUpload($item);
+            //$this->cropUpdate($item);
 
 
         }
@@ -211,6 +212,9 @@ class DownloadController extends Controller
 
 
         $images=glob('img/'.$item.'/*.jpg');
+
+
+
         foreach ($images as $image){
 
 
@@ -223,18 +227,59 @@ class DownloadController extends Controller
             if ($im2 !== FALSE) {
                 imagejpeg($im2, 'img/'.$item.'/thumbs/' . $cropName);
 
-                /*$cropFile = new App\Model\Projet5_images();
-                $cropFile
-                    ->setUserId(intval($_COOKIE['ID']))
-                    ->setDirname('users/img/user/'.$_COOKIE['username'].'/crops')
-                    ->setFilename($cropName.'-cropped')
-                    ->setExtension('jpg');
-                $cropManager=new App\Model\ImagesManager();
-                $addCroppedFile = $cropManager->create($cropFile);*/
+
 
 
             }
         }
+
+    }
+
+    public function cropImagesUploadForUpdate($item){
+
+
+
+        $images=glob('img/'.$item.'/*.jpg');
+
+
+        $messages=[];
+        foreach ($images as $image){
+
+
+            $src= $image;
+            $infoName= pathinfo($src);
+            $cropName=$infoName['basename'];
+            $image = imagecreatefromjpeg($src);
+            $size = min(imagesx($image), imagesy($image));
+            $im2 = imagecrop($image, ['x' => 0, 'y' => 0, 'width' => $size, 'height' => $size]);
+            if ($im2 !== FALSE) {
+                imagejpeg($im2, 'img/'.$item.'/thumbs/' . $cropName);
+            }
+            $entityManager = $this->getDoctrine()->getManager();
+            $image = new Images();
+
+
+            $image->setDirname('img/'.$item);
+            $image->setBasename($cropName);
+            $entityManager->persist($image);
+            $entityManager->flush();
+            $imageId= $image->getId();
+
+            $thumbnail = new Thumbnails();
+            $thumbnail->setImagesId($imageId);
+            $thumbnail->setDirname('img/'.$item.'/thumbs/');
+            $thumbnail->setBasename($cropName);
+            $entityManager->persist($thumbnail);
+            $entityManager->flush();
+        }
+        if($thumbnail){
+            $messages[]="Vos photos sont maintenant à jours";
+        }else{
+            $messages[]="Une erreur est survenue, imossible de mettre vos photos à jour";
+        }
+        return $this->render('images/' . $item . '/success' . $item . '.html.twig', [
+            'message' => $messages,
+        ]);
 
     }
 
@@ -300,10 +345,9 @@ class DownloadController extends Controller
                 'message' => $messages,
             ]);
         }elseif(empty($thumbBasename)){
-            $messages[]="Votre dossier est vide. Avant de pouvoir le mettre à jour il vous faut utiliser la commande dowload au moins une fois pour uploader une photo. Dès la deuxième photos vous pourrez utiliser la commande update";
-            return $this->render('images/' . $item . '/success' . $item . '.html.twig', [
-                'message' => $messages,
-            ]);
+
+            return $this->cropImagesUploadForUpdate($item);
+
 
 
         }else
@@ -400,9 +444,6 @@ class DownloadController extends Controller
 
     }
 
-
-
-
     public function downloadPulls()
     {
 
@@ -475,26 +516,34 @@ class DownloadController extends Controller
     public function updateFurWomen()
     {
         return $this->getImages('fursWomen');
-        //return ($this->update('fursWomen'));
+
     }
 
     public function updateDoudounes()
     {
         return $this->getImages('doudounes');
-        // return ($this->update('doudounes'));
+
     }
 
     public function updatePulls()
     {
         return $this->getImages('Pulls');
-        //return ($this->update('Pulls'));
+
     }
 
     public function updateCreapulka()
     {
         return $this->getImages('Creapulka');
-        //return ($this->update('Pulls'));
+
     }
+
+    public function updateWax()
+    {
+        return $this->getImages('Wax');
+
+    }
+
+
 
 
 }

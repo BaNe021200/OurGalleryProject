@@ -1,6 +1,9 @@
 {% extends "images/Doudounes/Doudounes.html.twig" %}
 
 
+{% block title %}Wax{% endblock title %}
+{% block updateButtonLink %}{{ path('UpdateWax') }}{% endblock %}
+
 {% block secondarytxt %}Wax{% endblock secondarytxt  %}
 
 {% block item0001Active %}{% endblock %}
@@ -11,4 +14,4 @@
 {% block downloadButtonLink %}{{ path('waxDownload') }}{% endblock downloadButtonLink %}
 {% block item  %}wax{% endblock item %}
 
-{#{% block src %}src="img/coverPull.jpg"{% endblock src %}#}
+{% block src %}src="../img/coverWax_1.jpg"{% endblock src %}

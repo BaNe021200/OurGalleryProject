@@ -104,6 +104,10 @@ UpdateCreapulka:
     path: /Pulls/Creapulka/Update
     controller: App\Controller\DownloadController::updateCreapulka
 
+UpdateWax:
+    path: /Pulls/Wax/Update
+    controller: App\Controller\DownloadController::updateWax
+
 
 
 
