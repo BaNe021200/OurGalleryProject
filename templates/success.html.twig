@@ -19,7 +19,7 @@
                 <div class="modal-body">
 
                     {% for statement in message %}
-                        {{ statement }}
+                        {{ statement|raw }}
                     {% endfor %}
                 </div>
 

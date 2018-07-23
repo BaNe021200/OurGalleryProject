@@ -9,9 +9,10 @@
 {% block item0001Active %}{% endblock %}
 {% block item0004Active %}active{% endblock %}
 
+{% block folder %}{{ path('ExploWax') }}{% endblock %}
 
 
 {% block downloadButtonLink %}{{ path('waxDownload') }}{% endblock downloadButtonLink %}
 {% block item  %}wax{% endblock item %}
 
-{% block src %}src="../img/coverWax_1.jpg"{% endblock src %}
+{% block src %}src="../img/coverWax_{{ bg_ramdom3 }}.jpg"{% endblock src %}

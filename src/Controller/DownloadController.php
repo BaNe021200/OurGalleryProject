@@ -32,119 +32,62 @@ class DownloadController extends Controller
             {
                 continue;
             }
+            if (is_uploaded_file($file['tmp_name'])) {
+                //on vérifie que le fichier est d'un type autorisé
+                $typeMime = mime_content_type($file['tmp_name']);
+                if ($typeMime == 'image/jpeg') {
+                    //on verifie la taille du fichier
+                    $size = filesize($file['tmp_name']);
+                    if ($size > 1600000) {
+                        $messages[] = "le fichier est trop gros";
+                    } else {
+
+                        $destinationPath = 'img/' . $item . '/' . $file['name'];
+                        $temporaryPath = $file['tmp_name'];
+                        if (move_uploaded_file($temporaryPath, $destinationPath)) {
+                            $messages[] = "le fichier " . $file['name'] . " a été correctement uploadé";
+                            $entityManager = $this->getDoctrine()->getManager();
+                            $image = new Images();
 
 
-            $destinationPath='img/'.$item.'/'.$file['name'];
-            $temporaryPath= $file['tmp_name'];
-            if(move_uploaded_file($temporaryPath,$destinationPath))
-            {
-                $messages[] = "le fichier ".$file['name']." a été correctement uploadé";
-                $entityManager = $this->getDoctrine()->getManager();
-                $image = new Images();
+                            $image->setDirname('img/' . $item);
+                            $image->setBasename($file['name']);
+                            $entityManager->persist($image);
+                            $entityManager->flush();
+                            $imageId = $image->getId();
+
+                            $thumbnail = new Thumbnails();
+                            $thumbnail->setImagesId($imageId);
+                            $thumbnail->setDirname('img/' . $item . '/thumbs/');
+                            $thumbnail->setBasename($file['name']);
+                            $entityManager->persist($thumbnail);
+                            $entityManager->flush();
 
 
-                $image->setDirname('img/'.$item);
-                $image->setBasename($file['name']);
-                $entityManager->persist($image);
-                $entityManager->flush();
-                $imageId= $image->getId();
-
-                $thumbnail = new Thumbnails();
-                $thumbnail->setImagesId($imageId);
-                $thumbnail->setDirname('img/'.$item.'/thumbs/');
-                $thumbnail->setBasename($file['name']);
-                $entityManager->persist($thumbnail);
-                $entityManager->flush();
+                        } else {
+                            $messages[] = "le fichier " . $file['name'] . " n'a pas été correctement uploadé";
+                        }
+                        //$this->thumbNails(500,300,$item);
+                        $this->cropImagesUpload($item);
+                        //$this->cropUpdate($item);
 
 
-
+                    }
+                }else{
+                    $messages[] = 'type de fichiers non valide';
+                }
+                }else{
+                if($file['error']==2){$messages[]= 'votre fichier est trop volumineux';}
+                if($file['error']==1){$messages[]= 'votre fichier excède la taille de configuration du serveur.Veuillez Uploader un fichier < à 1.4mo ';}
 
             }
-            else
-            {
-                $messages[] = "le fichier ".$file['name']." n'a pas été correctement uploadé";
             }
-            //$this->thumbNails(500,300,$item);
-            $this->cropImagesUpload($item);
-            //$this->cropUpdate($item);
-
-
-        }
         return $this->render('images/'.$item.'/success'.$item.'.html.twig',[
             'message' => $messages,
         ]);
     }
 
-    /*public function getImages($item){
 
-        $messages= [];
-        $imgs = glob('img/'.$item.'/*.jpg');
-        foreach ($imgs as $img)
-        {
-            $imgBasename[] = basename($img);
-        }
-        //var_dump($imgBasename);
-
-        $thumbs = glob('img/'.$item.'/thumbs/*.jpg');
-        foreach ($thumbs as $thumb)
-        {
-            $thumbBasename[] = basename($thumb);
-        }
-        $data = array_diff($imgBasename,$thumbBasename);
-
-        if(!empty($data))
-        {
-            foreach ($data as $datum)
-            {
-                $picture= 'img/'.$item.'/'.$datum ;
-                $image = imagecreatefromjpeg($picture);
-                $size = min(imagesx($image), imagesy($image));
-                $im2 = imagecrop($image, ['x' => 0, 'y' => 0, 'width' => $size, 'height' => $size]);
-                if ($im2 !== FALSE) {
-                    imagejpeg($im2, 'img/'.$item.'/thumbs/' . $datum);
-                }
-                $imageManager = new ImageManager();
-                $imageItem = new Images();
-
-
-                $imageItem->setDirname('img/'.$item);
-                $imageItem->setBasename($datum);
-                $images = $imageManager->create($imageItem);
-                foreach ($images as $image)
-                {
-                    //var_dump($image->getId());
-                    $imageId= $image->getId();
-
-                    $thumbnailManager = new ThumbnailManager();
-                    $thumbnail = new Thumbnails();
-                    $thumbnail->setImagesId($imageId);
-                    $thumbnail->setDirname('img/'.$item.'/thumbs/');
-                    $thumbnail->setBasename($datum);
-                    $thumbnail = $thumbnailManager->create($thumbnail);
-                }
-
-                if ($thumbnail)
-                {
-                    $messages[]= "vos photos sont à jour";
-                }else
-                {
-                    $messages[]="la mise à jour a échoué";
-                }
-                return $this->render('images/'.$item.'/success'.$item.'.html.twig',[
-                    'message' => $messages,
-                ]);
-
-
-
-            }
-        }else{
-            $messages[]="Il n'y a rien à mettre à jour";
-            return $this->render('images/'.$item.'/success'.$item.'.html.twig',[
-                'message' => $messages,
-            ]);
-        }
-
-    }*/
 
     public function getImages($item){
        return $this->cropUpdate($item);
@@ -326,7 +269,10 @@ class DownloadController extends Controller
         $imgs = glob('img/' . $item . '/*.jpg');
         foreach ($imgs as $img) {
             $imgBasename[] = basename($img);
+            $srcSize= filesize($img);
 
+            if($srcSize['error']==2){$messages[] = "Le fichier ".$imgBasename." est trop volumineux";}
+            if($srcSize['error']==1){$messages[]= 'votre fichier excède la taille de configuration du serveur.Veuillez Uploader un fichier < à 1.4mo ';}
         }
 
         //var_dump($imgBasename);die;
@@ -340,9 +286,11 @@ class DownloadController extends Controller
         @$data = array_diff(@$imgBasename, @$thumbBasename);
 
         if(empty($imgBasename)){
-            $messages[]="Votre dossier photos est vide !";
+            $messages[]="Votre dossier photos est vide";
+            $explo=  exec("C:\WINDOWS\\explorer.exe /e,/select,C:\wamp64\www\PhpTraining\pinterest\pinterest2\public\img\\".$item."\\thumbs");
             return $this->render('images/' . $item . '/success' . $item . '.html.twig', [
                 'message' => $messages,
+                
             ]);
         }elseif(empty($thumbBasename)){
 
@@ -369,39 +317,48 @@ class DownloadController extends Controller
 
 
                 $src = $image;
-                $infoName = pathinfo($src);
-                $cropName = $infoName['basename'];//var_dump($image);die;
-                $image = imagecreatefromjpeg($src);
-                $size = min(imagesx($image), imagesy($image));
-                $im2 = imagecrop($image, ['x' => 0, 'y' => 0, 'width' => $size, 'height' => $size]);
-                if ($im2 !== FALSE) {
-                    imagejpeg($im2, 'img/'.$item.'/thumbs/' . $cropName);
+                $srcName = basename($src);
+                $srcSize= filesize($src);
+                if($srcSize > 1600000 )
+                {$messages[] =nl2br("Le fichier ".$srcName." est trop volumineux\r\n ");
+
+
+                }else {
+
+                    $infoName = pathinfo($src);
+                    $cropName = $infoName['basename'];//var_dump($image);die;
+                    $image = imagecreatefromjpeg($src);
+                    $size = min(imagesx($image), imagesy($image));
+                    $im2 = imagecrop($image, ['x' => 0, 'y' => 0, 'width' => $size, 'height' => $size]);
+                    if ($im2 !== FALSE) {
+                        imagejpeg($im2, 'img/' . $item . '/thumbs/' . $cropName);
+                    }
+
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $image = new Images();
+
+
+                    $image->setDirname('img/' . $item);
+                    $image->setBasename($cropName);
+                    $entityManager->persist($image);
+                    $entityManager->flush();
+                    $imageId = $image->getId();
+
+                    $thumbnail = new Thumbnails();
+                    $thumbnail->setImagesId($imageId);
+                    $thumbnail->setDirname('img/' . $item . '/thumbs/');
+                    $thumbnail->setBasename($cropName);
+                    $entityManager->persist($thumbnail);
+                    $entityManager->flush();
+                    if(@$thumbnail)
+                    {
+                        $messages[]= nl2br("le fichier ".$srcName." a été uploadé\r\n");
+                    }
+
                 }
 
-                $entityManager = $this->getDoctrine()->getManager();
-                $image = new Images();
 
 
-                $image->setDirname('img/'.$item);
-                $image->setBasename($cropName);
-                $entityManager->persist($image);
-                $entityManager->flush();
-                $imageId= $image->getId();
-
-                $thumbnail = new Thumbnails();
-                $thumbnail->setImagesId($imageId);
-                $thumbnail->setDirname('img/'.$item.'/thumbs/');
-                $thumbnail->setBasename($cropName);
-                $entityManager->persist($thumbnail);
-                $entityManager->flush();
-
-
-
-
-            }
-            if($thumbnail)
-            {
-                $messages[]="Vos photos sont maintenant à jours";
             }
 
         }else {

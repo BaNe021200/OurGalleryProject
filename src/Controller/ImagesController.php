@@ -110,19 +110,24 @@ class ImagesController extends Controller
     {
 
         $dir = 'img/'.$item.'/thumbs/';
+
+
         $bg_ramdom2 = mt_rand(1, 2);
+        $bg_ramdom3 = mt_rand(1, 3);
         $bg_ramdom6 = mt_rand(1, 6);
 
         $thumbs = $this->getDoctrine()
             ->getRepository(Thumbnails::class)
             ->findByDirname($dir);
-        //$this->getImages($item);
+
 
         return $this->render('images/'.$item.'/'.$item.'.html.twig',[
 
             'thumbs' => $thumbs,
             'bg_ramdom' => $bg_ramdom2,
+            'bg_ramdom3' => $bg_ramdom3,
             'bg_ramdom6' =>$bg_ramdom6,
+
 
         ]);
     }
@@ -163,6 +168,25 @@ class ImagesController extends Controller
         return ($this->item('Wax'));
     }
 
+    public function openExplo($item)
+    {
+     $explo=  exec("C:\WINDOWS\\explorer.exe /e,/select,C:\wamp64\www\PhpTraining\pinterest\pinterest2\public\img\\".$item."\\thumbs");
 
+        return $this->redirect($this->item($item));
+
+
+    }
+
+    public function exploWax()
+    {
+        return ($this->openExplo("Wax"));
+
+    }
+
+    public function exploDoudounes()
+    {
+        return ($this->openExplo("Doudounes"));
+
+    }
 
 }
