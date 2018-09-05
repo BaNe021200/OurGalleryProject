@@ -5,10 +5,16 @@
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('zoombox/zoombox.css') }}">
     <link rel="stylesheet" href="{{ asset('css/rounded.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/clone2.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+
+
    {#<link rel="stylesheet" href="{{ asset('css/images.css') }}">#}
 {% endblock stylesheet %}
 
 {% block updateButtonLink %}{{ path('UpdateDoudounes') }}{% endblock updateButtonLink %}
+{% block deleteButtonLink %}{{ path('ListDoudounes') }}{% endblock %}
+
 
 {% block folder %}{{ path('ExploDoudounes') }}{% endblock folder %}
 
@@ -33,13 +39,41 @@
 
     {% for thumb in thumbs %}
 
-        <div  class="col-lg-3 col-md-4 col-xs-6  thumbs" >
+        {#<div id="divThumb" class="col-lg-3 col-md-4 col-xs-6  thumbs" >
 
             <a href="{% block levelLink %}{% endblock levelLink %}img/{% block item %}doudounes{% endblock item %}/{{ thumb.basename }}" rel="zoombox[{% block zoomboxVille %}doudounes{% endblock zoomboxVille %}]">
-                <img id="thumb" class="img-fluid img-thumbnail thumbs " src="{% block levelLinkThumbs %}{% endblock levelLinkThumbs %}{{ thumb.dirname }}{{ thumb.basename }}" alt="">
+
+                <img id="thumb" class="img-fluid img-thumbnail thumbs " src="{% block levelLinkThumbs %}{% endblock levelLinkThumbs %}{{ thumb.dirname }}{{ thumb.basename }}" title="{{ thumb.basename }} "   alt="">
             </a>
 
-        </div>
+        </div>#}
+
+
+            <article class="fold ">
+                <div id="divThumb" class="top">
+                    <img id="thumb" class="img-fluid img-thumbnail thumbs "
+                         src="{% block levelLinkThumbs %}{% endblock levelLinkThumbs %}{{ thumb.dirname }}{{ thumb.basename }}"
+                         title="{{ thumb.basename }} " alt=""></div>
+
+                <h2>
+                    <a href="{% block levelLink %}{% endblock levelLink %}img/{% block item %}doudounes{% endblock item %}/{{ thumb.basename }}"
+                       rel="zoombox[{% block zoomboxVille %}doudounes{% endblock zoomboxVille %}]"><i class="far fa-eye"
+                                                                                                      style="color: #1E90FF; margin-right: 12px; "></i>
+
+                    </a>
+
+                    <a href="{{ path('EraseDoudounes') }}"><i class="fas fa-trash" style="color: #F00;"></i></a>
+                    
+                </h2>
+                <div class="bot">
+                    <img id="thumb" class="img-fluid img-thumbnail thumbs "
+                         src="{% block levelLinkThumbs2 %}{% endblock levelLinkThumbs2 %}{{ thumb.dirname }}{{ thumb.basename }}"
+                         title="{{ thumb.basename }} " alt="">
+                </div>
+
+            </article>
+
+
 {% endfor %}
 {% endblock thumbnails %}
 
@@ -57,7 +91,10 @@
 
 {% block javaScript %}
     {{ parent() }}
-    <script type="text/javascript" src="{{ asset('zoombox/jquery.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <script type="text/javascript" src="{{ asset('zoombox/zoombox.js') }}"></script>
+
+
 
 {% endblock javaScript %}

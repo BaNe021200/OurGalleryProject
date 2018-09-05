@@ -1,3 +1,17 @@
 .thumbs{
     border-radius: 50%;
 }
+
+.thumbs :hover:after{
+
+}
+
+.disabledCross{
+    display: none !important;
+}
+
+
+.visibleCross{
+    display: flex !important;
+
+}

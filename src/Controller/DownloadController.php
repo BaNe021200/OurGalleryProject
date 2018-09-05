@@ -76,12 +76,12 @@ class DownloadController extends Controller
                 }else{
                     $messages[] = 'type de fichiers non valide';
                 }
-                }else{
+            }else{
                 if($file['error']==2){$messages[]= 'votre fichier est trop volumineux';}
                 if($file['error']==1){$messages[]= 'votre fichier excède la taille de configuration du serveur.Veuillez Uploader un fichier < à 1.4mo ';}
 
             }
-            }
+        }
         return $this->render('images/'.$item.'/success'.$item.'.html.twig',[
             'message' => $messages,
         ]);
@@ -90,7 +90,7 @@ class DownloadController extends Controller
 
 
     public function getImages($item){
-       return $this->cropUpdate($item);
+        return $this->cropUpdate($item);
 
 
     }
@@ -112,36 +112,36 @@ class DownloadController extends Controller
             if ($im2 !== FALSE) {
                 imagejpeg($im2, 'img/'.$item.'/thumbs/' . $cropName);
             }
-                $entityManager = $this->getDoctrine()->getManager();
-                $image = new Images();
+            $entityManager = $this->getDoctrine()->getManager();
+            $image = new Images();
 
 
-                $image->setDirname('img/'.$item);
-                $image->setBasename($cropName);
-                $entityManager->persist($image);
-                $entityManager->flush();
-                $imageId= $image->getId();
+            $image->setDirname('img/'.$item);
+            $image->setBasename($cropName);
+            $entityManager->persist($image);
+            $entityManager->flush();
+            $imageId= $image->getId();
 
-                $thumbnail = new Thumbnails();
-                $thumbnail->setImagesId($imageId);
-                $thumbnail->setDirname('img/'.$item.'/thumbs/');
-                $thumbnail->setBasename($cropName);
-                $entityManager->persist($thumbnail);
-                $entityManager->flush();
+            $thumbnail = new Thumbnails();
+            $thumbnail->setImagesId($imageId);
+            $thumbnail->setDirname('img/'.$item.'/thumbs/');
+            $thumbnail->setBasename($cropName);
+            $entityManager->persist($thumbnail);
+            $entityManager->flush();
 
 
 
-                if ($thumbnail)
-                {
-                    $messages[]= "vos photos sont à jour";
-                }else
-                {
-                    $messages[]="la mise à jour a échoué";
-                }
+            if ($thumbnail)
+            {
+                $messages[]= "vos photos sont à jour";
+            }else
+            {
+                $messages[]="la mise à jour a échoué";
+            }
 
-                return $this->render('images/'.$item.'/success'.$item.'.html.twig',[
-                    'message' => $messages,
-                ]);
+            return $this->render('images/'.$item.'/success'.$item.'.html.twig',[
+                'message' => $messages,
+            ]);
 
 
 
@@ -290,7 +290,7 @@ class DownloadController extends Controller
             $explo=  exec("C:\WINDOWS\\explorer.exe /e,/select,C:\wamp64\www\PhpTraining\pinterest\pinterest2\public\img\\".$item."\\thumbs");
             return $this->render('images/' . $item . '/success' . $item . '.html.twig', [
                 'message' => $messages,
-                
+
             ]);
         }elseif(empty($thumbBasename)){
 
@@ -299,107 +299,78 @@ class DownloadController extends Controller
 
 
         }else
-            {
+        {
 
 
 
-        foreach ($data as $datum) {
-            $pictures[] = 'img/' . $item . '/' . $datum; //var_dump($data);die;
-        }
+            foreach ($data as $datum) {
+                $pictures[] = 'img/' . $item . '/' . $datum; //var_dump($data);die;
+            }
 
 
-        if (!empty($data)) {
+            if (!empty($data)) {
 
 
 
-            $images = $pictures;
-            foreach ($images as $image) {
+                $images = $pictures;
+                foreach ($images as $image) {
 
 
-                $src = $image;
-                $srcName = basename($src);
-                $srcSize= filesize($src);
-                if($srcSize > 1600000 )
-                {$messages[] =nl2br("Le fichier ".$srcName." est trop volumineux\r\n ");
+                    $src = $image;
+                    $srcName = basename($src);
+                    $srcSize= filesize($src);
+                    if($srcSize > 1600000 )
+                    {$messages[] =nl2br("Le fichier ".$srcName." est trop volumineux\r\n ");
 
 
-                }else {
+                    }else {
 
-                    $infoName = pathinfo($src);
-                    $cropName = $infoName['basename'];//var_dump($image);die;
-                    $image = imagecreatefromjpeg($src);
-                    $size = min(imagesx($image), imagesy($image));
-                    $im2 = imagecrop($image, ['x' => 0, 'y' => 0, 'width' => $size, 'height' => $size]);
-                    if ($im2 !== FALSE) {
-                        imagejpeg($im2, 'img/' . $item . '/thumbs/' . $cropName);
+                        $infoName = pathinfo($src);
+                        $cropName = $infoName['basename'];//var_dump($image);die;
+                        $image = imagecreatefromjpeg($src);
+                        $size = min(imagesx($image), imagesy($image));
+                        $im2 = imagecrop($image, ['x' => 0, 'y' => 0, 'width' => $size, 'height' => $size]);
+                        if ($im2 !== FALSE) {
+                            imagejpeg($im2, 'img/' . $item . '/thumbs/' . $cropName);
+                        }
+
+                        $entityManager = $this->getDoctrine()->getManager();
+                        $image = new Images();
+
+
+                        $image->setDirname('img/' . $item);
+                        $image->setBasename($cropName);
+                        $entityManager->persist($image);
+                        $entityManager->flush();
+                        $imageId = $image->getId();
+
+                        $thumbnail = new Thumbnails();
+                        $thumbnail->setImagesId($imageId);
+                        $thumbnail->setDirname('img/' . $item . '/thumbs/');
+                        $thumbnail->setBasename($cropName);
+                        $entityManager->persist($thumbnail);
+                        $entityManager->flush();
+                        if(@$thumbnail)
+                        {
+                            $messages[]= nl2br("le fichier ".$srcName." a été uploadé\r\n");
+                        }
+
                     }
 
-                    $entityManager = $this->getDoctrine()->getManager();
-                    $image = new Images();
 
-
-                    $image->setDirname('img/' . $item);
-                    $image->setBasename($cropName);
-                    $entityManager->persist($image);
-                    $entityManager->flush();
-                    $imageId = $image->getId();
-
-                    $thumbnail = new Thumbnails();
-                    $thumbnail->setImagesId($imageId);
-                    $thumbnail->setDirname('img/' . $item . '/thumbs/');
-                    $thumbnail->setBasename($cropName);
-                    $entityManager->persist($thumbnail);
-                    $entityManager->flush();
-                    if(@$thumbnail)
-                    {
-                        $messages[]= nl2br("le fichier ".$srcName." a été uploadé\r\n");
-                    }
 
                 }
 
-
-
+            }else {
+                $messages[] = "Il n'y a rien à mettre à jour";
             }
-
-        }else {
-            $messages[] = "Il n'y a rien à mettre à jour";
-        }
             return $this->render('images/' . $item . '/success' . $item . '.html.twig', [
                 'message' => $messages,
             ]);
         }
     }
 
-    public function cropcenter($image){
-        //$images=glob('users/img/user/'.$_COOKIE['username'].'/*.jpg');
 
-        $src= $image;
-
-        $infoName= pathinfo($src);
-        $cropName=$infoName['filename'];
-        $image = imagecreatefromjpeg($src);
-        $crop_width = imagesx($image);
-        $crop_height = imagesy($image);
-
-        $size = min($crop_width, $crop_height);
-
-
-        if($crop_width >= $crop_height) {
-            $newx= ($crop_width-$crop_height)/2;
-
-            $im2 = imagecrop($image, ['x' => $newx, 'y' => 0, 'width' => $size, 'height' => $size]);
-        }
-        else {
-            $newy= ($crop_height-$crop_width)/2;
-
-            $im2 = imagecrop($image, ['x' => 0, 'y' => $newy, 'width' => $size, 'height' => $size]);
-        }
-
-
-        imagejpeg($im2, 'users/img/user/'.$_COOKIE['username'].'/crops/'.$cropName.'-cropped-center.jpg',90);
-
-
-    }
 
     public function downloadPulls()
     {
@@ -418,10 +389,20 @@ class DownloadController extends Controller
 
         return ($this->download('Creapulka'));
     }
+    public function downloadDelicious_Sev()
+    {
+
+        return ($this->download('Delicious_Sev'));
+    }
 
     public function uploadCreapulka()
     {
         return($this->upload("Creapulka"));
+    }
+
+    public function uploadDelicious_Sev()
+    {
+        return($this->upload("Delicious_Sev"));
     }
 
 
@@ -494,13 +475,67 @@ class DownloadController extends Controller
 
     }
 
+    public function updateDelicious_Sev()
+    {
+        return $this->getImages('Delicious_Sev');
+
+    }
+
     public function updateWax()
     {
         return $this->getImages('Wax');
 
     }
 
+    public function listImages($item)
+    {
+        $tManager = new ThumbnailManager();
+        $tables = $tManager->readImgId($item);
 
+        return $this->render('images/'.$item.'/delete'.$item.'.html.twig',[
+            'tables' => $tables,
+
+        ]);
+
+    }
+
+    public function eraseModal($item)
+    {
+
+        $tManager = new ThumbnailManager();
+        $tables = $tManager->readImgId($item);
+        return $this->render('images/'.$item.'/erase'.$item.'.html.twig',[
+            'tables' => $tables,
+        ]);
+    }
+
+    public function listDoudounes()
+    {
+        return ($this->listImages('Doudounes'));
+    }
+
+    public function eraseModalDoudoune()
+    {
+        return($this->eraseModal('Doudounes'));
+    }
+
+    public function listFursWomen()
+    {
+        return ($this->listImages('FursWomen'));
+    }
+
+    public function erase($item,$basename,$images_id)
+    {
+        return($this->listImages($item));
+    }
+
+    public function eraseDoudounes()
+    {
+        $manager = new ThumbnailManager();
+        $deleteThumbnails = $manager->erase;
+        return($this->erase('Doudounes'));
+    }
 
 
 }
+

@@ -1,0 +1,33 @@
+{% extends "delete.html.twig" %}
+{% block test %}{% endblock test %}
+
+{% block updateButtonLink %}{{ path('UpdateDoudounes') }}{% endblock updateButtonLink %}
+
+
+
+{% block stylesheet %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+{% endblock %}
+
+
+{% block tbody %}
+
+{% for table in tables %}
+
+
+    <tr>
+        <th scope="row">{{table.images_id}}</th>
+        <td>{{ table.basename }}</td>
+        <td><a href="{{ path('EraseDoudounes',{'basename': table.basename,'images_Id': table.images_id}) }}"><i class="fas fa-times"></i></a></td>
+
+
+    </tr>
+
+
+
+{% endfor %}
+
+
+
+{% endblock tbody %}

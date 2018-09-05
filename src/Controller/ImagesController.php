@@ -25,85 +25,7 @@ class ImagesController extends Controller
     }
 
 
-    /*public function getImages($item){
 
-        $images= glob('img/'.$item.'/*.jpg');
-
-        foreach ($images as $image)
-        {
-
-            $mins = glob('img/'.$item.'/thumbs/*.jpg');
-            foreach ($mins as $min)
-            {
-                $infoMin = pathinfo($min);
-                $dirnameMin = $infoMin['dirname'];
-                $basenameMin = $infoMin['basename'];
-                @$srcMin = $dirnameMin.$basenameMin;
-                //var_dump($srcMin);
-            }
-
-            if(!file_exists(@$srcMin))
-            {
-                $this->cropImages($item);
-                $infopicture = pathinfo($image);
-                $basename = $infopicture['basename'];
-
-                //$entityManager = $this->getDoctrine()->getManager();
-
-                $imageManager = new ImageManager();
-                $imageItem = new Images();
-
-
-                $imageItem->setDirname('img/'.$item);
-                $imageItem->setBasename($basename);
-                $images = $imageManager->create($imageItem);
-
-                foreach ($images as $image)
-                {
-                    var_dump($image->getId());
-                    $imageId= $image->getId();
-
-                    $thumbnailManager = new ThumbnailManager();
-                    $thumbnail = new Thumbnails();
-                    $thumbnail->setImagesId($imageId);
-                    $thumbnail->setDirname('img/'.$item.'/thumbs/');
-                    $thumbnail->setBasename($basename);
-                    $thumbnail = $thumbnailManager->create($thumbnail);
-                }
-
-
-
-
-            }else{}
-
-        }
-
-    }*/
-
-    /*public function cropImages($item){
-
-
-
-        $images=glob('img/'.$item.'/*.jpg');
-        foreach ($images as $image){
-
-
-            $src= $image;
-            $infoName= pathinfo($src);
-            $cropName=$infoName['basename'];
-            $image = imagecreatefromjpeg($src);
-            $size = min(imagesx($image), imagesy($image));
-            $im2 = imagecrop($image, ['x' => 0, 'y' => 0, 'width' => $size, 'height' => $size]);
-            if ($im2 !== FALSE) {
-                imagejpeg($im2, 'img/'.$item.'/thumbs/' . $cropName);
-
-
-
-
-            }
-        }
-
-    }*/
 
 
     public function item($item)
@@ -119,6 +41,7 @@ class ImagesController extends Controller
         $thumbs = $this->getDoctrine()
             ->getRepository(Thumbnails::class)
             ->findByDirname($dir);
+
 
 
         return $this->render('images/'.$item.'/'.$item.'.html.twig',[
@@ -143,6 +66,14 @@ class ImagesController extends Controller
 
         return ($this->item('Creapulka'));
     }
+
+    public function Delicious_Sev()
+    {
+
+        return ($this->item('Delicious_Sev'));
+    }
+
+
 
 
 

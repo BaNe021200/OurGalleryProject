@@ -35,6 +35,17 @@ class ThumbnailsRepository extends ServiceEntityRepository
         ;
     }
 
+    public function findByImages_id($images_id)
+    {
+        return $this->createQueryBuilder('query')
+            ->andWhere('query.imagesId = :id')
+            ->setParameter('id',$images_id)
+            ->orderBy('query.imagesId','ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 
     /*
     public function findOneBySomeField($value): ?Thumbnails

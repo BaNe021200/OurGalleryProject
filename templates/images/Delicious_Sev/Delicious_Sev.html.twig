@@ -1,0 +1,20 @@
+{% extends "images/Pulls/Pulls.html.twig" %}
+
+{% block title %}Pulls{% endblock title %}
+{% block updateButtonLink %}{{ path('UpdateDelicious_Sev') }}{% endblock %}
+
+{% block secondarytxt %}Delicious Sev{% endblock secondarytxt  %}
+{% block stylesheet%}
+{{ parent() }}
+    <style>.thumbs{border-radius: 0px;}</style>
+{% endblock stylesheet %}
+
+{% block item0001Active %}{% endblock %}
+{% block item0003Active %}active{% endblock %}
+
+
+
+{% block downloadButtonLink %}{{ path('delicious_SevDownload') }}{% endblock downloadButtonLink %}
+{% block item  %}delicious_sev{% endblock item %}
+
+{% block src %}src="../img/coverDeliciousSev_{{ bg_ramdom }}.jpg"{% endblock src %}

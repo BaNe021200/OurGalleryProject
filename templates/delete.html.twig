@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{% block main %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#Id</th>
+            <th scope="col">chemin</th>
+            <th scope="col">Effacer</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% block tbody %}
+
+
+
+        <tr>
+            <th scope="row">1</th>
+            <td></td>
+            <td><i class="fas fa-times"></i></td>
+
+        </tr>
+        {% endblock tbody %}
+        </tbody>
+    </table>
+{#
+    #}
+{% endblock main %}

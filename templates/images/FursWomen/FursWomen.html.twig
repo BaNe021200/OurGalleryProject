@@ -1,6 +1,8 @@
 {% extends "images/Doudounes/Doudounes.html.twig" %}
 
 {% block updateButtonLink %}{{ path('UpdateFursWomen') }}{% endblock %}
+{% block deleteButtonLink %}{{ path('ListFurWomen') }}{% endblock deleteButtonLink %}
+
 {% block title %}WomenInFurs{% endblock title %}
 
 
@@ -25,5 +27,6 @@
 
 
 {% block levelLinkThumbs %}../{% endblock levelLinkThumbs %}
+{% block levelLinkThumbs2 %}../{% endblock levelLinkThumbs2 %}
 {% block levelLink%}../{% endblock levelLink %}
 

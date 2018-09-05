@@ -10,6 +10,7 @@ namespace App\Model;
 
 use App\Entity\Thumbnails;
 use PDO;
+use Symfony\Bundle\FrameworkBundle\Tests\Templating\DelegatingEngineTest;
 
 class ThumbnailManager extends Manager
 {
@@ -58,4 +59,32 @@ class ThumbnailManager extends Manager
 
         return $thumbnails;
     }
+
+    public function readImgId($item)
+    {
+        $dirname = "img/".$item."/thumbs/";
+        $this->pdostatement =$this->pdo->prepare('
+        SELECT images_id,dirname,basename 
+        FROM thumbnails
+        WHERE dirname = :dir ');
+        $this->pdostatement->bindValue(':dir',$dirname, PDO::PARAM_STR);
+        $executeIsOk = $this->pdostatement->execute();
+        $thumbnails = $this->pdostatement->fetchAll();
+
+        return $thumbnails;
+    }
+
+    public function erase($item,$baseame,$image_id)
+    {
+        $this->pdostatement = $this->pdo->prepare('
+        DELETE
+        FROM thumbnails WHERE images_id = :id AND basename = :basename');
+        $this->pdostatement->bindValue(':id',$image_id,PDO::PARAM_INT);
+        $this->pdostatement->bindValue(':basename',$baseame,PDO::PARAM_STR);
+        $executeIsOk = $this->pdostatement->execute();
+
+    }
+
+
+
 }
