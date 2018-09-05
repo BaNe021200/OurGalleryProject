@@ -37,41 +37,42 @@
 
 {% block thumbnails %}
 
+
     {% for thumb in thumbs %}
 
-        {#<div id="divThumb" class="col-lg-3 col-md-4 col-xs-6  thumbs" >
-
-            <a href="{% block levelLink %}{% endblock levelLink %}img/{% block item %}doudounes{% endblock item %}/{{ thumb.basename }}" rel="zoombox[{% block zoomboxVille %}doudounes{% endblock zoomboxVille %}]">
-
-                <img id="thumb" class="img-fluid img-thumbnail thumbs " src="{% block levelLinkThumbs %}{% endblock levelLinkThumbs %}{{ thumb.dirname }}{{ thumb.basename }}" title="{{ thumb.basename }} "   alt="">
-            </a>
-
-        </div>#}
 
 
-            <article class="fold ">
-                <div id="divThumb" class="top">
-                    <img id="thumb" class="img-fluid img-thumbnail thumbs "
-                         src="{% block levelLinkThumbs %}{% endblock levelLinkThumbs %}{{ thumb.dirname }}{{ thumb.basename }}"
-                         title="{{ thumb.basename }} " alt=""></div>
 
-                <h2>
-                    <a href="{% block levelLink %}{% endblock levelLink %}img/{% block item %}doudounes{% endblock item %}/{{ thumb.basename }}"
-                       rel="zoombox[{% block zoomboxVille %}doudounes{% endblock zoomboxVille %}]"><i class="far fa-eye"
-                                                                                                      style="color: #1E90FF; margin-right: 12px; "></i>
+         <article class="fold ">
+             <div id="divThumb" class="top">
+                 <img id="thumb" class="img-fluid img-thumbnail thumbs "
+                      src="{% block levelLinkThumbs %}{% endblock levelLinkThumbs %}{{ thumb.dirname }}{{ thumb.basename }}"
+                      title="{{ thumb.basename }} " alt=""></div>
 
-                    </a>
+             <h2>
+                 <a href="{% block levelLink %}{% endblock levelLink %}img/{% block item %}doudounes{% endblock item %}/{{ thumb.basename }}"
+                    rel="zoombox[{% block zoomboxVille %}doudounes{% endblock zoomboxVille %}]"><i class="far fa-eye"
+                                                                                                   style="color: #1E90FF; margin-right: 12px; "></i>
 
-                    <a href="{{ path('EraseDoudounes') }}"><i class="fas fa-trash" style="color: #F00;"></i></a>
-                    
-                </h2>
-                <div class="bot">
-                    <img id="thumb" class="img-fluid img-thumbnail thumbs "
-                         src="{% block levelLinkThumbs2 %}{% endblock levelLinkThumbs2 %}{{ thumb.dirname }}{{ thumb.basename }}"
-                         title="{{ thumb.basename }} " alt="">
-                </div>
+                 </a>
 
-            </article>
+
+
+
+
+
+                 <a href="{% block eraseItem %}{{ path('EraseDoudounes', {'id': thumb.getId ,'images_id': thumb.getImagesId } ) }}{% endblock eraseItem %}"><i class="fas fa-trash" style="color: #F00;"></i>
+                     </a>
+
+
+             </h2>
+             <div class="bot">
+                 <img id="thumb" class="img-fluid img-thumbnail thumbs "
+                      src="{% block levelLinkThumbs2 %}{% endblock levelLinkThumbs2 %}{{ thumb.dirname }}{{ thumb.basename }}"
+                      title="{{ thumb.basename }} " alt="">
+             </div>
+
+         </article>
 
 
 {% endfor %}

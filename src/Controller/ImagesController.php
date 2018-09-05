@@ -43,10 +43,13 @@ class ImagesController extends Controller
             ->findByDirname($dir);
 
 
+        $tManager = new ThumbnailManager();
+        $tables = $tManager->readImgId($item);
 
         return $this->render('images/'.$item.'/'.$item.'.html.twig',[
 
             'thumbs' => $thumbs,
+            'tables' => $tables,
             'bg_ramdom' => $bg_ramdom2,
             'bg_ramdom3' => $bg_ramdom3,
             'bg_ramdom6' =>$bg_ramdom6,
@@ -119,5 +122,26 @@ class ImagesController extends Controller
         return ($this->openExplo("Doudounes"));
 
     }
+
+    public function listImages($item)
+    {
+        $tManager = new ThumbnailManager();
+        $tables = $tManager->readImgId($item);
+
+        return $this->render('images/'.$item.'/delete'.$item.'.html.twig',[
+            'tables' => $tables,
+
+        ]);
+
+    }
+    public function listDoudounes()
+    {
+        return ($this->listImages('Doudounes'));
+    }
+
+
+
+
+
 
 }

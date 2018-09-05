@@ -74,14 +74,15 @@ class ThumbnailManager extends Manager
         return $thumbnails;
     }
 
-    public function erase($item,$baseame,$image_id)
+    public function destroyThumb($id)
     {
         $this->pdostatement = $this->pdo->prepare('
         DELETE
-        FROM thumbnails WHERE images_id = :id AND basename = :basename');
-        $this->pdostatement->bindValue(':id',$image_id,PDO::PARAM_INT);
-        $this->pdostatement->bindValue(':basename',$baseame,PDO::PARAM_STR);
+        FROM thumbnails WHERE id = :id ');
+        $this->pdostatement->bindValue(':id',$id,PDO::PARAM_INT);
+
         $executeIsOk = $this->pdostatement->execute();
+        return $executeIsOk;
 
     }
 

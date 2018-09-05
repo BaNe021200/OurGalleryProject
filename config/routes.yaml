@@ -154,7 +154,15 @@ ListFurWomen:
      controller: App\Controller\DownloadController::listFursWomen
 
 EraseDoudounes:
-      path: /Doudounes/Delete/Erase
-      controller: App\Controller\DownloadController::eraseModalDoudoune
+     path: /Doudounes/Delete/{id}/{images_id}
+     controller: App\Controller\DownloadController::eraseModalDoudoune
+     methods: [GET]
 
+EraseWax:
+     path: /Wax/Delete/id={id}/images_id={images_id}
+     controller: App\Controller\DownloadController::eraseModalWax
+     methods: [GET]
 
+DestroyDoudoune:
+      path: /Doudounes/Delete/destroy/id={id}/images_id={images_id}
+      controller: App\Controller\DownloadController::destroyDoudoune

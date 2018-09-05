@@ -5,3 +5,9 @@
 
 
 {% block pathSuccess %}{{path('Doudounes')}}{% endblock %}
+
+{% block destroyItem %}
+
+<a href="{{ path('DestroyDoudoune', {'id': id ,'images_id': images_Id } ) }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
+
+{% endblock destroyItem %}

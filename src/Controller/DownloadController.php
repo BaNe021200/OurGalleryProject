@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\ImageManager;
+use App\Model\Manager;
 use App\Model\ThumbnailManager;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -499,24 +500,47 @@ class DownloadController extends Controller
 
     }
 
-    public function eraseModal($item)
+    public function eraseModal($item,$id,$images_id)
     {
 
-        $tManager = new ThumbnailManager();
-        $tables = $tManager->readImgId($item);
         return $this->render('images/'.$item.'/erase'.$item.'.html.twig',[
-            'tables' => $tables,
+            'id' =>$id ,
+            'images_Id'=>$images_id
         ]);
     }
 
-    public function listDoudounes()
+
+
+    public function eraseModalDoudoune($id,$images_id)
     {
-        return ($this->listImages('Doudounes'));
+        return($this->eraseModal('Doudounes',$id,$images_id));
     }
 
-    public function eraseModalDoudoune()
+    public function eraseModalWax($id,$images_id)
     {
-        return($this->eraseModal('Doudounes'));
+        return($this->eraseModal('Wax',$id,$images_id));
+    }
+
+    public function destroy($item,$id,$images_id)
+    {
+        $messages=[];
+        $tManager = new ThumbnailManager();
+        $destroyThumb = $tManager->destroyThumb($id);
+
+
+        $iManager = new ImageManager();
+        $destroyImg = $iManager->destroyImg($images_id);
+
+        //$message = 'votre image est détruite';
+
+
+        return $this->render('images/'.$item.'/eraseSuccess'.$item.'.html.twig');
+
+    }
+
+    public function destroyDoudoune($id,$images_id)
+    {
+        return($this->destroy('Doudounes',$id,$images_id));
     }
 
     public function listFursWomen()
