@@ -526,15 +526,30 @@ class DownloadController extends Controller
         $messages=[];
         $tManager = new ThumbnailManager();
         $destroyThumb = $tManager->destroyThumb($id);
-
+        if($destroyThumb)
+        {
+            $messages[]="La miniature à bien été détruite !</br> ";
+        }
+        else{
+            $messages[]="Une erreur a surgit du fond de la nuit. La miniature n'a pu être détruite";
+        }
 
         $iManager = new ImageManager();
         $destroyImg = $iManager->destroyImg($images_id);
+        if($destroyImg){
+            $messages[]="L'image a bien été détruite !";
+        }
+        else{
+            $messages[]="Une erreur a surgit du fond de la nuit. L'image n'a pu être détruite";
+        }
 
-        //$message = 'votre image est détruite';
 
+        return $this->render('images/'.$item.'/success'.$item.'.html.twig',[
+            'message' => $messages
 
-        return $this->render('images/'.$item.'/eraseSuccess'.$item.'.html.twig');
+        ]);
+
+        /*return $this->render('images/'.$item.'/eraseSuccess'.$item.'.html.twig');*/
 
     }
 
