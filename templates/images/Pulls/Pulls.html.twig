@@ -23,5 +23,7 @@
 
 
 
-
+{% block eraseItem %}
+    {{ path('ErasePulls', {'id': thumb.getId ,'images_id': thumb.getImagesId } ) }}
+{% endblock %}
 

@@ -18,3 +18,7 @@
 {% block item  %}delicious_sev{% endblock item %}
 
 {% block src %}src="../img/coverDeliciousSev_{{ bg_ramdom }}.jpg"{% endblock src %}
+
+{% block eraseItem %}
+    {{ path('EraseDelicious_Sev', {'id': thumb.getId ,'images_id': thumb.getImagesId } ) }}
+{% endblock %}

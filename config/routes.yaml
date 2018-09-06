@@ -117,6 +117,11 @@ UpdateFursWomen:
     path: /Furs/Women/Update
     controller: App\Controller\DownloadController::updateFurWomen
 
+UpdateFursMen:
+    path: /Furs/Men/Update
+    controller: App\Controller\DownloadController::updateFurMen
+
+
 UpdateDoudounes:
     path: /Doudounes/Update
     controller: App\Controller\DownloadController::updateDoudounes
@@ -145,13 +150,13 @@ cropButton:
     controller: App\Controller\DownloadController::cropButton
 
 
-ListDoudounes:
-     path: /Doudounes/Delete
-     controller: App\Controller\DownloadController::listDoudounes
+#ListDoudounes:
+#     path: /Doudounes/Delete
+#     controller: App\Controller\DownloadController::listDoudounes
 
-ListFurWomen:
-     path: /Furs/Women/Delete
-     controller: App\Controller\DownloadController::listFursWomen
+#ListFurWomen:
+#     path: /Furs/Women/Delete
+#     controller: App\Controller\DownloadController::listFursWomen
 
 EraseDoudounes:
      path: /Doudounes/Delete/{id}/{images_id}
@@ -159,10 +164,60 @@ EraseDoudounes:
      methods: [GET]
 
 EraseWax:
-     path: /Wax/Delete/id={id}/images_id={images_id}
+     path: /Wax/Delete/{id}/{images_id}
      controller: App\Controller\DownloadController::eraseModalWax
      methods: [GET]
 
+ErasePulls:
+     path: /Pulls/Delete/{id}/{images_id}
+     controller: App\Controller\DownloadController::eraseModalPulls
+     methods: [GET]
+
+EraseCreapulka:
+     path: /Pulls/Creapulka/Delete/{id}/{images_id}
+     controller: App\Controller\DownloadController::eraseModalCreapulka
+     methods: [GET]
+
+EraseDelicious_Sev:
+     path: /Pulls/Delicious_Sev/Delete/{id}/{images_id}
+     controller: App\Controller\DownloadController::eraseModalDelicious_Sev
+     methods: [GET]
+
+EraseFursWomen:
+     path: /Furs/Women/Delete/{id}/{images_id}
+     controller: App\Controller\DownloadController::eraseModalFursWomen
+     methods: [GET]
+
+EraseFursMen:
+     path: /Furs/Men/Delete/{id}/{images_id}
+     controller: App\Controller\DownloadController::eraseModalFursMen
+     methods: [GET]
+
 DestroyDoudoune:
-      path: /Doudounes/Delete/destroy/id={id}/images_id={images_id}
+      path: /Doudounes/Delete/destroy/{id}/{images_id}
       controller: App\Controller\DownloadController::destroyDoudoune
+
+DestroyWax:
+      path: /Wax/Delete/destroy/{id}/{images_id}
+      controller: App\Controller\DownloadController::destroyWax
+
+DestroyPulls:
+      path: /Pulls/Delete/destroy/{id}/{images_id}
+      controller: App\Controller\DownloadController::destroyPulls
+
+DestroyCreapulka:
+      path: /Pulls/Creapulka/Delete/destroy/{id}/{images_id}
+      controller: App\Controller\DownloadController::destroyCreapulka
+
+DestroyDelicious_Sev:
+      path: /Pulls/Delicious_Sev/Delete/destroy/{id}/{images_id}
+      controller: App\Controller\DownloadController::destroyDelicious_Sev
+
+DestroyFursWomen:
+      path: /Furs/Women/Delete/destroy/{id}/{images_id}
+      controller: App\Controller\DownloadController::destroyFursWomen
+
+DestroyFursMen:
+      path: /Furs/Men/Delete/destroy/{id}/{images_id}
+      controller: App\Controller\DownloadController::destroyFursMen
+

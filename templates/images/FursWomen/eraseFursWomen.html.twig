@@ -1,0 +1,12 @@
+{% extends "erase.html.twig" %}
+
+{% block updateButtonLink %}{{ path('UpdateFursWomen') }}
+{% endblock %}
+
+{% block pathSuccess %}{{path('FursWomen')}}{% endblock %}
+
+{% block destroyItem %}
+
+    <a href="{{ path('DestroyFursWomen', {'id': id ,'images_id': images_Id } ) }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
+
+{% endblock destroyItem %}

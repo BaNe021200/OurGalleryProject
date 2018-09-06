@@ -1,12 +1,18 @@
 {% extends "images/FursWomen/FursWomen.html.twig" %}
 
 
-
+{% block updateButtonLink %}{{ path('UpdateFursMen') }}{% endblock %}
 
 {% block secondarytxt %}Fourrures-hommes{% endblock secondarytxt %}
+
+
 
 {% block downloadButtonLink %}{{ path('fursDownloadMen') }}{% endblock %}
 
 {% block item %}fursMen{% endblock item %}
 
 {% block src %}src="{{ asset('img/coverFursMen.jpg') }}"{% endblock src %}
+
+{% block eraseItem %}
+    {{ path('EraseFursMen', {'id': thumb.getId ,'images_id': thumb.getImagesId } ) }}
+{% endblock %}

@@ -458,6 +458,12 @@ class DownloadController extends Controller
 
     }
 
+    public function updateFurMen()
+    {
+        return $this->getImages('fursMen');
+
+    }
+
     public function updateDoudounes()
     {
         return $this->getImages('doudounes');
@@ -500,6 +506,8 @@ class DownloadController extends Controller
 
     }
 
+    //Fonction EraseModal
+
     public function eraseModal($item,$id,$images_id)
     {
 
@@ -520,6 +528,40 @@ class DownloadController extends Controller
     {
         return($this->eraseModal('Wax',$id,$images_id));
     }
+
+    public function eraseModalPulls($id,$images_id)
+    {
+        return($this->eraseModal('Pulls',$id,$images_id));
+    }
+
+    public function eraseModalCreapulka($id,$images_id)
+    {
+        return($this->eraseModal('Creapulka',$id,$images_id));
+    }
+
+    public function eraseModalDelicious_Sev($id,$images_id)
+    {
+        return($this->eraseModal('Delicious_Sev',$id,$images_id));
+    }
+
+    public function eraseModalFursWomen($id,$images_id)
+    {
+        return($this->eraseModal('FursWomen',$id,$images_id));
+    }
+
+    public function eraseModalFursMen($id,$images_id)
+    {
+        return($this->eraseModal('FursMen',$id,$images_id));
+    }
+
+
+
+
+
+
+    /*
+     * fonction destroy
+     */
 
     public function destroy($item,$id,$images_id)
     {
@@ -558,22 +600,37 @@ class DownloadController extends Controller
         return($this->destroy('Doudounes',$id,$images_id));
     }
 
-    public function listFursWomen()
+    public function destroyWax($id,$images_id)
     {
-        return ($this->listImages('FursWomen'));
+        return($this->destroy('Wax',$id,$images_id));
     }
 
-    public function erase($item,$basename,$images_id)
+    public function destroyPulls($id,$images_id)
     {
-        return($this->listImages($item));
+        return($this->destroy('Pulls',$id,$images_id));
     }
 
-    public function eraseDoudounes()
+    public function destroyCreapulka($id,$images_id)
     {
-        $manager = new ThumbnailManager();
-        $deleteThumbnails = $manager->erase;
-        return($this->erase('Doudounes'));
+        return($this->destroy('Creapulka',$id,$images_id));
     }
+
+    public function destroyDelicious_Sev($id,$images_id)
+    {
+        return($this->destroy('Delicious_Sev',$id,$images_id));
+    }
+
+    public function destroyFursWomen($id,$images_id)
+    {
+        return($this->destroy('FursWomen',$id,$images_id));
+    }
+
+    public function destroyFursMen($id,$images_id)
+    {
+        return($this->destroy('FursMen',$id,$images_id));
+    }
+
+
 
 
 }
