@@ -20,7 +20,9 @@
 
 
 {% block test %}
-
+    {% for thumb in thumbs %}
+       {{ dump(thumb.getbasename) }}
+    {% endfor %}
 {% endblock test %}
 
 
