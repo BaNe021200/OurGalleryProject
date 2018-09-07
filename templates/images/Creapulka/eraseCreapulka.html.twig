@@ -7,6 +7,11 @@
 
 {% block destroyItem %}
 
-    <a href="{{ path('DestroyCreapulka', {'id': id ,'images_id': images_Id } ) }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
+    <a href="{{ path('DestroyCreapulka', {'basename': basename,'id': id ,'images_id': images_Id } ) }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
 
 {% endblock destroyItem %}
+
+{% block eraseThemeItem %}creapulka{% endblock %}
+
+{% block levelLinkEraseImageModal %}../{% endblock %}
+

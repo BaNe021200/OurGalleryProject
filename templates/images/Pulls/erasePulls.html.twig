@@ -7,6 +7,8 @@
 
 {% block destroyItem %}
 
-    <a href="{{ path('DestroyPulls', {'id': id ,'images_id': images_Id } ) }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
+    <a href="{{ path('DestroyPulls', {'basename': basename,'id': id ,'images_id': images_Id } ) }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
 
 {% endblock destroyItem %}
+{% block eraseThemeItem %}pulls{% endblock %}
+

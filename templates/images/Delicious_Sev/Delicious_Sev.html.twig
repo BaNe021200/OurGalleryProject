@@ -20,5 +20,5 @@
 {% block src %}src="../img/coverDeliciousSev_{{ bg_ramdom }}.jpg"{% endblock src %}
 
 {% block eraseItem %}
-    {{ path('EraseDelicious_Sev', {'id': thumb.getId ,'images_id': thumb.getImagesId } ) }}
+    {{ path('EraseDelicious_Sev', {'basename':thumb.getBasename,'id': thumb.getId ,'images_id': thumb.getImagesId } ) }}
 {% endblock %}

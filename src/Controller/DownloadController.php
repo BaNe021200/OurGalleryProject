@@ -508,10 +508,11 @@ class DownloadController extends Controller
 
     //Fonction EraseModal
 
-    public function eraseModal($item,$id,$images_id)
+    public function eraseModal($item,$basename,$id,$images_id)
     {
 
         return $this->render('images/'.$item.'/erase'.$item.'.html.twig',[
+            'basename' => $basename,
             'id' =>$id ,
             'images_Id'=>$images_id
         ]);
@@ -519,39 +520,39 @@ class DownloadController extends Controller
 
 
 
-    public function eraseModalDoudoune($id,$images_id)
+    public function eraseModalDoudoune($basename,$id,$images_id)
     {
-        return($this->eraseModal('Doudounes',$id,$images_id));
+        return($this->eraseModal('Doudounes',$basename,$id,$images_id));
     }
 
-    public function eraseModalWax($id,$images_id)
+    public function eraseModalWax($basename,$id,$images_id)
     {
-        return($this->eraseModal('Wax',$id,$images_id));
+        return($this->eraseModal('Wax',$basename,$id,$images_id));
     }
 
-    public function eraseModalPulls($id,$images_id)
+    public function eraseModalPulls($basename,$id,$images_id)
     {
-        return($this->eraseModal('Pulls',$id,$images_id));
+        return($this->eraseModal('Pulls',$basename,$id,$images_id));
     }
 
-    public function eraseModalCreapulka($id,$images_id)
+    public function eraseModalCreapulka($basename,$id,$images_id)
     {
-        return($this->eraseModal('Creapulka',$id,$images_id));
+        return($this->eraseModal('Creapulka',$basename,$id,$images_id));
     }
 
-    public function eraseModalDelicious_Sev($id,$images_id)
+    public function eraseModalDelicious_Sev($basename,$id,$images_id)
     {
-        return($this->eraseModal('Delicious_Sev',$id,$images_id));
+        return($this->eraseModal('Delicious_Sev',$basename,$id,$images_id));
     }
 
-    public function eraseModalFursWomen($id,$images_id)
+    public function eraseModalFursWomen($basename,$id,$images_id)
     {
-        return($this->eraseModal('FursWomen',$id,$images_id));
+        return($this->eraseModal('FursWomen',$basename,$id,$images_id));
     }
 
-    public function eraseModalFursMen($id,$images_id)
+    public function eraseModalFursMen($basename,$id,$images_id)
     {
-        return($this->eraseModal('FursMen',$id,$images_id));
+        return($this->eraseModal('FursMen',$basename,$id,$images_id));
     }
 
 

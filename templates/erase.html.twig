@@ -1,5 +1,12 @@
 {% extends "images/Pulls/downloadPulls.html.twig" %}
 
+{% block stylesheet %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/rounded.css') }}">
+{% endblock stylesheet %}
+
+
+
 {% block main %}
 
 
@@ -8,7 +15,13 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Danger suppression !</h5>
+
+
+
+
+
+
+                    <h5 class="modal-title" id="exampleModalLabel">Danger suppression ! <img class="thumbs" src="{% block levelLinkEraseImageModal %}{% endblock levelLinkEraseImageModal %}../../../../img/{% block eraseThemeItem %}{% endblock eraseThemeItem %}/thumbs/{{ basename }}" width="64px" height="64px"  alt=""> </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -20,7 +33,7 @@
 
 
 
-                        <p>Vous êtes sur point de supprimer votre photo  dont l'ID est le numéro de mimiature est numéro {{ id }} et le numero de photo le {{ images_Id }}  ...continuer ?</p>
+                        <p>Vous êtes sur point de supprimer la photo "{{ basename }}"  dont l'ID est le numéro de mimiature est numéro {{ id }} et le numero de photo le {{ images_Id }}  ...continuer ?</p>
 
 
                     </div>
@@ -37,6 +50,13 @@
 
 
 {% endblock main %}
+
+{% block test %}
+
+
+
+
+{% endblock test %}
 
 
 {% block javaScript %}

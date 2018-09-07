@@ -18,7 +18,7 @@
 {% block src %}src="../img/coverWax_{{ bg_ramdom3 }}.jpg"{% endblock src %}
 
 {% block eraseItem %}
-    {{ path('EraseWax', {'id': thumb.getId ,'images_id': thumb.getImagesId } ) }}
+    {{ path('EraseWax', {'basename': thumb.basename,'id': thumb.getId ,'images_id': thumb.getImagesId } ) }}
 {% endblock %}
 
 

@@ -20,9 +20,7 @@
 
 
 {% block test %}
-    {% for thumb in thumbs %}
-       {{ dump(thumb.getbasename) }}
-    {% endfor %}
+
 {% endblock test %}
 
 
@@ -63,7 +61,7 @@
 
 
 
-                 <a href="{% block eraseItem %}{{ path('EraseDoudounes', {'id': thumb.getId ,'images_id': thumb.getImagesId } ) }}{% endblock eraseItem %}"><i class="fas fa-trash" style="color: #F00;"></i>
+                 <a href="{% block eraseItem %}{{ path('EraseDoudounes', {'basename': thumb.getBasename,'id': thumb.getId ,'images_id': thumb.getImagesId } ) }}{% endblock eraseItem %}"><i class="fas fa-trash" style="color: #F00;"></i>
                      </a>
 
 

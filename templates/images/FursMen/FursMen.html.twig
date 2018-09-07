@@ -14,5 +14,5 @@
 {% block src %}src="{{ asset('img/coverFursMen.jpg') }}"{% endblock src %}
 
 {% block eraseItem %}
-    {{ path('EraseFursMen', {'id': thumb.getId ,'images_id': thumb.getImagesId } ) }}
+    {{ path('EraseFursMen', {'basename': thumb.basename,'id': thumb.getId ,'images_id': thumb.getImagesId } ) }}
 {% endblock %}

@@ -16,5 +16,5 @@
 {% block src %}src="../img/coverCreapulka_{{ bg_ramdom6 }}.jpg"{% endblock src %}
 
 {% block eraseItem %}
-    {{ path('EraseCreapulka', {'id': thumb.getId ,'images_id': thumb.getImagesId } ) }}
+    {{ path('EraseCreapulka', {'basename':thumb.getBasename,'id': thumb.getId ,'images_id': thumb.getImagesId } ) }}
 {% endblock %}

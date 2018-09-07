@@ -7,6 +7,11 @@
 
 {% block destroyItem %}
 
-    <a href="{{ path('DestroyDelicious_Sev', {'id': id ,'images_id': images_Id } ) }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
+    <a href="{{ path('DestroyDelicious_Sev', {'basename':basename,'id': id ,'images_id': images_Id } ) }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
 
 {% endblock destroyItem %}
+
+{% block eraseThemeItem %}delicious_sev{% endblock eraseThemeItem %}
+
+
+{% block levelLinkEraseImageModal %}../{% endblock levelLinkEraseImageModal %}

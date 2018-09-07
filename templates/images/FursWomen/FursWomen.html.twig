@@ -30,6 +30,8 @@
 {% block levelLinkThumbs2 %}../{% endblock levelLinkThumbs2 %}
 {% block levelLink%}../{% endblock levelLink %}
 
+
+
 {% block eraseItem %}
-    {{ path('EraseFursWomen', {'id': thumb.getId ,'images_id': thumb.getImagesId } ) }}
+    {{ path('EraseFursWomen', {'basename':thumb.basename,'id': thumb.getId ,'images_id': thumb.getImagesId } ) }}
 {% endblock %}

@@ -5,8 +5,13 @@
 
 {% block pathSuccess %}{{path('FursWomen')}}{% endblock %}
 
+{% block eraseThemeItem %}fursMen{% endblock %}
+
+{% block levelLinkEraseImageModal %}../{% endblock %}
+
+
 {% block destroyItem %}
 
-    <a href="{{ path('DestroyFursMen', {'id': id ,'images_id': images_Id } ) }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
+    <a href="{{ path('DestroyFursMen', {'basename': basename,'id': id ,'images_id': images_Id } ) }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
 
 {% endblock destroyItem %}
