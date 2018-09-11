@@ -111,17 +111,7 @@ class ImagesController extends Controller
 
     }
 
-    public function exploWax()
-    {
-        return ($this->openExplo("Wax"));
 
-    }
-
-    public function exploDoudounes()
-    {
-        return ($this->openExplo("Doudounes"));
-
-    }
 
     public function listImages($item)
     {

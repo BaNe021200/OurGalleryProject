@@ -34,20 +34,6 @@ Wax:
     controller: App\Controller\ImagesController::Wax
 
 
-
-
-#ExploWax:
-#    path: /Wax/Explo
-#    controller: App\Controller\ImagesController::exploWax
-
-#ExploDoudounes:
-#    path: /Doudounes/Explo
-#    controller: App\Controller\ImagesController::exploDoudounes
-
-
-
-
-
 pullsDownload:
     path: /Pulls/Pulls/download
     controller: App\Controller\DownloadController::downloadPulls
