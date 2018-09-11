@@ -244,14 +244,7 @@ class DownloadController extends Controller
             if ($im2 !== FALSE) {
                 imagejpeg($im2, 'img/crops/cropThumbs/' . $cropName);
 
-                /*$cropFile = new App\Model\Projet5_images();
-                $cropFile
-                    ->setUserId(intval($_COOKIE['ID']))
-                    ->setDirname('users/img/user/'.$_COOKIE['username'].'/crops')
-                    ->setFilename($cropName.'-cropped')
-                    ->setExtension('jpg');
-                $cropManager=new App\Model\ImagesManager();
-                $addCroppedFile = $cropManager->create($cropFile);*/
+
 
 
 
@@ -494,17 +487,7 @@ class DownloadController extends Controller
 
     }
 
-    public function listImages($item)
-    {
-        $tManager = new ThumbnailManager();
-        $tables = $tManager->readImgId($item);
 
-        return $this->render('images/'.$item.'/delete'.$item.'.html.twig',[
-            'tables' => $tables,
-
-        ]);
-
-    }
 
     //Fonction EraseModal
 

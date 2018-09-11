@@ -24,10 +24,6 @@ class ImagesController extends Controller
         ]);
     }
 
-
-
-
-
     public function item($item)
     {
 
@@ -102,6 +98,8 @@ class ImagesController extends Controller
         return ($this->item('Wax'));
     }
 
+    /* la fonction openExplo permet d'ouvrir le fichier d'un thème dans l'explorateur windows
+     lorsque celui-ci est vide*/
     public function openExplo($item)
     {
      $explo=  exec("C:\WINDOWS\\explorer.exe /e,/select,C:\wamp64\www\PhpTraining\pinterest\pinterest2\public\img\\".$item."\\thumbs");
@@ -113,21 +111,7 @@ class ImagesController extends Controller
 
 
 
-    public function listImages($item)
-    {
-        $tManager = new ThumbnailManager();
-        $tables = $tManager->readImgId($item);
 
-        return $this->render('images/'.$item.'/delete'.$item.'.html.twig',[
-            'tables' => $tables,
-
-        ]);
-
-    }
-    public function listDoudounes()
-    {
-        return ($this->listImages('Doudounes'));
-    }
 
 
 
