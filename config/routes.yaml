@@ -1,3 +1,6 @@
+#affichages des thèmes
+
+
 /:
     path: /
     controller: App\Controller\ImagesController::Doudounes
@@ -26,77 +29,16 @@ Delicious_Sev:
     path: /Pull/Delicious_Sev
     controller: App\Controller\ImagesController::Delicious_Sev
 
-
-
-
 Wax:
     path: /Wax
     controller: App\Controller\ImagesController::Wax
 
 
-#pullsDownload:
-#    path: /Pulls/Pulls/download
-#    controller: App\Controller\DownloadController::downloadPulls
-#
-#pullsUpload:
-#    path: /Pulls/Pulls/upload
-#    controller: App\Controller\DownloadController::uploadPulls
-#    methods: [POST]
-#
-#creapulkaDownload:
-#    path: /Pulls/Creapulka/download
-#    controller: App\Controller\DownloadController::downloadCreapulka
-#
-#
-#creapulkaUpload:
-#    path: /Pulls/Creapulka/upload
-#    controller: App\Controller\DownloadController::uploadCreapulka
-#    methods: [POST]
-#
-#delicious_SevUpload:
-#    path: /Pulls/Delicious_Sev/upload
-#    controller: App\Controller\DownloadController::uploadDelicious_Sev
-#    methods: [POST]
-#
-#delicious_SevDownload:
-#    path: /Pulls/Delicious_Sev/download
-#    controller: App\Controller\DownloadController::downloadDelicious_Sev
-#
-fursDownloadWomen:
-    path: /Furs/Women/download
-    controller: App\Controller\DownloadController::downloadFursWomen
+#Update
 
-fursDownloadMen:
-    path: /Furs/Men/download
-    controller: App\Controller\DownloadController::downloadFursMen
-
-fursUploadWomen:
-    path: /Furs/Women/upload
-    controller: App\Controller\DownloadController::uploadFursWomen
-    methods: [POST]
-
-fursUploadMen:
-    path: /Furs/Men/upload
-    controller: App\Controller\DownloadController::uploadFursMen
-    methods: [POST]
-
-doudounesDownload:
-    path: /Doudounes/download
-    controller: App\Controller\DownloadController::downloadDoudounes
-
-doudounesUpload:
-    path: /Doudounes/upload
-    controller: App\Controller\DownloadController::uploadDoudounes
-    methods: [POST]
-
-waxDownload:
-    path: /Wax/download
-    controller: App\Controller\DownloadController::downloadWax
-
-waxUpload:
-    path: /Wax/upload
-    controller: App\Controller\DownloadController::uploadWax
-    methods: [POST]
+UpdateDoudounes:
+    path: /Doudounes/Update
+    controller: App\Controller\DownloadController::updateDoudounes
 
 
 UpdateFursWomen:
@@ -106,12 +48,6 @@ UpdateFursWomen:
 UpdateFursMen:
     path: /Furs/Men/Update
     controller: App\Controller\DownloadController::updateFurMen
-
-
-UpdateDoudounes:
-    path: /Doudounes/Update
-    controller: App\Controller\DownloadController::updateDoudounes
-
 
 UpdatePulls:
     path: /Pulls/Pulls/Update
@@ -125,24 +61,12 @@ UpdateDelicious_Sev:
     path: /Pulls/Delicious_Sev/Update
     controller: App\Controller\DownloadController::updateDelicious_Sev
 
-
 UpdateWax:
     path: /Pulls/Wax/Update
     controller: App\Controller\DownloadController::updateWax
 
+# Erase
 
-#cropButton:
- #   path: /cropButton
- #   controller: App\Controller\DownloadController::cropButton
-
-
-#ListDoudounes:
-#     path: /Doudounes/Delete
-#     controller: App\Controller\DownloadController::listDoudounes
-
-#ListFurWomen:
-#     path: /Furs/Women/Delete
-#     controller: App\Controller\DownloadController::listFursWomen
 
 EraseDoudounes:
      path: /Doudounes/Delete/{basename}/{id}/{images_id}
@@ -178,6 +102,8 @@ EraseFursMen:
      path: /Furs/Men/Delete/{basename}/{id}/{images_id}
      controller: App\Controller\DownloadController::eraseModalFursMen
      methods: [GET]
+
+#destroy
 
 DestroyDoudoune:
       path: /Doudounes/Delete/destroy/{basename}/{id}/{images_id}

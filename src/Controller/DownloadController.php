@@ -15,57 +15,9 @@ use App\Controller\ImagesController;
 class DownloadController extends Controller
 {
 
-    //fonction download
-    public function download($item)
-    {
-        return $this->render('images/'.$item.'/download'.$item.'.html.twig',[
-
-        ]);
-    }
-
-    public function downloadDoudounes()
-    {
-
-        return ($this->download("Doudounes"));
-    }
-
-    public function downloadFursWomen()
-    {
-
-        return ($this->download("fursWomen"));
-    }
-
-    public function downloadFursMen()
-    {
-
-        return ($this->download("fursMen"));
-    }
-
-    public function downloadPulls()
-    {
-
-        return ($this->download('Pulls'));
-    }
-
-    public function downloadCreapulka()
-    {
-
-        return ($this->download('Creapulka'));
-    }
-
-    public function downloadDelicious_Sev()
-    {
-
-        return ($this->download('Delicious_Sev'));
-    }
-
-    public function downloadWax()
-    {
-
-        return ($this->download("Wax"));
-    }
 
     //fonction update
+
     public function getImages($item){
         return $this->cropUpdate($item);
     }
@@ -220,6 +172,7 @@ class DownloadController extends Controller
 
     }
 
+
     /*Fonction EraseModal*/
 
     public function eraseModal($item,$basename,$id,$images_id)
@@ -266,6 +219,7 @@ class DownloadController extends Controller
     {
         return($this->eraseModal('FursMen',$basename,$id,$images_id));
     }
+
 
     /*fonction destroy*/
 
