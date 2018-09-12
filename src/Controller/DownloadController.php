@@ -54,7 +54,7 @@ class DownloadController extends Controller
             ]);
         }elseif(empty($thumbBasename)){
 
-            return $this->cropImagesUploadForUpdate($item);
+            return $this->firstCropImagesForUpdate($item);
 
 
 
@@ -128,6 +128,54 @@ class DownloadController extends Controller
                 'message' => $messages,
             ]);
         }
+    }
+
+    public function firstCropImagesForUpdate($item){
+
+
+
+        $images=glob('img/'.$item.'/*.jpg');
+
+
+        $messages=[];
+        foreach ($images as $image){
+
+
+            $src= $image;
+            $infoName= pathinfo($src);
+            $cropName=$infoName['basename'];
+            $image = imagecreatefromjpeg($src);
+            $size = min(imagesx($image), imagesy($image));
+            $im2 = imagecrop($image, ['x' => 0, 'y' => 0, 'width' => $size, 'height' => $size]);
+            if ($im2 !== FALSE) {
+                imagejpeg($im2, 'img/'.$item.'/thumbs/' . $cropName);
+            }
+            $entityManager = $this->getDoctrine()->getManager();
+            $image = new Images();
+
+
+            $image->setDirname('img/'.$item);
+            $image->setBasename($cropName);
+            $entityManager->persist($image);
+            $entityManager->flush();
+            $imageId= $image->getId();
+
+            $thumbnail = new Thumbnails();
+            $thumbnail->setImagesId($imageId);
+            $thumbnail->setDirname('img/'.$item.'/thumbs/');
+            $thumbnail->setBasename($cropName);
+            $entityManager->persist($thumbnail);
+            $entityManager->flush();
+        }
+        if($thumbnail){
+            $messages[]="Vos photos sont maintenant à jours";
+        }else{
+            $messages[]="Une erreur est survenue, imossible de mettre vos photos à jour";
+        }
+        return $this->render('images/' . $item . '/success' . $item . '.html.twig', [
+            'message' => $messages,
+        ]);
+
     }
 
     public function updateDoudounes()
