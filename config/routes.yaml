@@ -34,34 +34,34 @@ Wax:
     controller: App\Controller\ImagesController::Wax
 
 
-pullsDownload:
-    path: /Pulls/Pulls/download
-    controller: App\Controller\DownloadController::downloadPulls
-
-pullsUpload:
-    path: /Pulls/Pulls/upload
-    controller: App\Controller\DownloadController::uploadPulls
-    methods: [POST]
-
-creapulkaDownload:
-    path: /Pulls/Creapulka/download
-    controller: App\Controller\DownloadController::downloadCreapulka
-
-
-creapulkaUpload:
-    path: /Pulls/Creapulka/upload
-    controller: App\Controller\DownloadController::uploadCreapulka
-    methods: [POST]
-
-delicious_SevUpload:
-    path: /Pulls/Delicious_Sev/upload
-    controller: App\Controller\DownloadController::uploadDelicious_Sev
-    methods: [POST]
-
-delicious_SevDownload:
-    path: /Pulls/Delicious_Sev/download
-    controller: App\Controller\DownloadController::downloadDelicious_Sev
-
+#pullsDownload:
+#    path: /Pulls/Pulls/download
+#    controller: App\Controller\DownloadController::downloadPulls
+#
+#pullsUpload:
+#    path: /Pulls/Pulls/upload
+#    controller: App\Controller\DownloadController::uploadPulls
+#    methods: [POST]
+#
+#creapulkaDownload:
+#    path: /Pulls/Creapulka/download
+#    controller: App\Controller\DownloadController::downloadCreapulka
+#
+#
+#creapulkaUpload:
+#    path: /Pulls/Creapulka/upload
+#    controller: App\Controller\DownloadController::uploadCreapulka
+#    methods: [POST]
+#
+#delicious_SevUpload:
+#    path: /Pulls/Delicious_Sev/upload
+#    controller: App\Controller\DownloadController::uploadDelicious_Sev
+#    methods: [POST]
+#
+#delicious_SevDownload:
+#    path: /Pulls/Delicious_Sev/download
+#    controller: App\Controller\DownloadController::downloadDelicious_Sev
+#
 fursDownloadWomen:
     path: /Furs/Women/download
     controller: App\Controller\DownloadController::downloadFursWomen
@@ -131,9 +131,9 @@ UpdateWax:
     controller: App\Controller\DownloadController::updateWax
 
 
-cropButton:
-    path: /cropButton
-    controller: App\Controller\DownloadController::cropButton
+#cropButton:
+ #   path: /cropButton
+ #   controller: App\Controller\DownloadController::cropButton
 
 
 #ListDoudounes:
