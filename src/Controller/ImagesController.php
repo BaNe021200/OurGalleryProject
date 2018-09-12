@@ -39,13 +39,11 @@ class ImagesController extends Controller
             ->findByDirname($dir);
 
 
-        $tManager = new ThumbnailManager();
-        $tables = $tManager->readImgId($item);
+
 
         return $this->render('images/'.$item.'/'.$item.'.html.twig',[
 
             'thumbs' => $thumbs,
-            'tables' => $tables,
             'bg_ramdom' => $bg_ramdom2,
             'bg_ramdom3' => $bg_ramdom3,
             'bg_ramdom6' =>$bg_ramdom6,
@@ -72,10 +70,6 @@ class ImagesController extends Controller
         return ($this->item('Delicious_Sev'));
     }
 
-
-
-
-
     public function FursWomen()
     {
         return ($this->item('fursWomen'));
@@ -85,8 +79,6 @@ class ImagesController extends Controller
     {
         return ($this->item('fursMen'));
     }
-
-
 
     public function Doudounes()
     {
@@ -98,11 +90,10 @@ class ImagesController extends Controller
         return ($this->item('Wax'));
     }
 
-    /* la fonction openExplo permet d'ouvrir le fichier d'un thème dans l'explorateur windows
-     lorsque celui-ci est vide*/
     public function openExplo($item)
-    {
-     $explo=  exec("C:\WINDOWS\\explorer.exe /e,/select,C:\wamp64\www\PhpTraining\pinterest\pinterest2\public\img\\".$item."\\thumbs");
+    { /* la fonction openExplo permet d'ouvrir le fichier d'un thème dans l'explorateur windows lorsque celui-ci est vide*/
+
+        $explo=  exec("C:\WINDOWS\\explorer.exe /e,/select,C:\wamp64\www\PhpTraining\pinterest\pinterest2\public\img\\".$item."\\thumbs");
 
         return $this->redirect($this->item($item));
 
