@@ -16,13 +16,10 @@ class DownloadController extends Controller
 {
 
 
-    //fonction update
 
-    public function getImages($item){
-        return $this->cropUpdate($item);
-    }
 
-    public function cropUpdate($item)
+
+    public function update($item)
     {
 
         $messages = [];
@@ -180,43 +177,43 @@ class DownloadController extends Controller
 
     public function updateDoudounes()
     {
-        return $this->getImages('doudounes');
+        return $this->update('doudounes');
 
     }
 
     public function updateFurWomen()
     {
-        return $this->getImages('fursWomen');
+        return $this->update('fursWomen');
 
     }
 
     public function updateFurMen()
     {
-        return $this->getImages('fursMen');
+        return $this->update('fursMen');
 
     }
 
     public function updatePulls()
     {
-        return $this->getImages('Pulls');
+        return $this->update('Pulls');
 
     }
 
     public function updateCreapulka()
     {
-        return $this->getImages('Creapulka');
+        return $this->update('Creapulka');
 
     }
 
     public function updateDelicious_Sev()
     {
-        return $this->getImages('Delicious_Sev');
+        return $this->update('Delicious_Sev');
 
     }
 
     public function updateWax()
     {
-        return $this->getImages('Wax');
+        return $this->update('Wax');
 
     }
 
