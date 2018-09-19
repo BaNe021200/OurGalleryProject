@@ -348,6 +348,11 @@ class DownloadController extends Controller
         ]);
     }
 
+    public function eraseModalDoudounesAll()
+    {
+        return $this->eraseModalAll('Doudounes');
+    }
+
     public function eraseModalFursWomenAll()
     {
         return $this->eraseModalAll('fursWomen');
@@ -387,6 +392,11 @@ class DownloadController extends Controller
 
         /*return $this->render('images/'.$item.'/eraseSuccess'.$item.'.html.twig');*/
 
+    }
+
+    public function destroyDoudounesAll()
+    {
+        return $this->destroyAll('Doudounes');
     }
 
     public function destroyFursWomenAll()

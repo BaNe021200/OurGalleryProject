@@ -7,11 +7,20 @@
 }
 
 .disabledCross{
-    display: none !important;
-}
+     display: none !important;
+ }
 
 
 .visibleCross{
     display: flex !important;
 
+}
+
+
+.deleteAllButton
+{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
 }

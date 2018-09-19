@@ -68,10 +68,17 @@
                         <a class=" dropdown-toggle nav-link" role="link" id="dropdownMenuLink" data-toggle="dropdown"  aria-haspopup="false" aria-expanded="true" href="{{ path('FursWomen') }}">{% block item0002 %}Fourrures{% endblock item0002 %}</a>
 
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="{% block item0002Link %}{{ path('FursWomen') }}{% endblock item0002Link %}">Femmes</a>
-                            <a class="dropdown-item" href="{% block item0005Link %}{{ path('FursMen') }}{% endblock item0005Link %}">Hommes</a>
+                            <div class="deleteAllButton">
+                                <a class="dropdown-item" href="{% block item0002Link %}{{ path('FursWomen') }}{% endblock item0002Link %}">Femme</a>
+                                <a href="{{ path('EraseFursWomenAll') }}"><i class="fas fa-minus-circle" style="color: red;"></i></a>
 
-                        </div>
+                            </div>
+
+
+                          <div class="deleteAllButton"> <a class="dropdown-item" href="{% block item0005Link %}{{ path('FursMen') }}{% endblock item0005Link %}">Hommes  </a><i class="fas fa-minus-circle" style="color: red;"></i>
+
+                          </div>
+            </div>
 
 
 
