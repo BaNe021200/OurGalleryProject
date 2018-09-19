@@ -6,8 +6,12 @@
     controller: App\Controller\ImagesController::Doudounes
 
 Doudounes:
-    path: /Doudounes
+    path: /Doudounes/Doudounes
     controller: App\Controller\ImagesController::Doudounes
+
+Desigual:
+    path: /Doudounes/Desigual
+    controller: App\Controller\ImagesController::Desigual
 
 FursWomen:
     path: /Furs/Women
@@ -37,8 +41,12 @@ Wax:
 #Update
 
 UpdateDoudounes:
-    path: /Doudounes/Update
+    path: /Doudounes/Doudounes/Update
     controller: App\Controller\DownloadController::updateDoudounes
+
+UpdateDesigual:
+    path: /Doudounes/Desigual/Update
+    controller: App\Controller\DownloadController::updateDesigual
 
 
 UpdateFursWomen:
@@ -69,8 +77,13 @@ UpdateWax:
 
 
 EraseDoudounes:
-     path: /Doudounes/Delete/{basename}/{id}/{images_id}
+     path: /Doudounes/Doudounes/Delete/{basename}/{id}/{images_id}
      controller: App\Controller\DownloadController::eraseModalDoudoune
+     methods: [GET]
+
+EraseDesigual:
+     path: /Doudounes/Desigual/Delete/{basename}/{id}/{images_id}
+     controller: App\Controller\DownloadController::eraseModalDesigual
      methods: [GET]
 
 EraseWax:
@@ -110,6 +123,11 @@ EraseDoudounesAll:
   controller: App\Controller\DownloadController::eraseModalDoudounesAll
   methods: [GET]
 
+EraseDesigualAll:
+  path: /Doudounes/Delete/All/EraseDesigualAll
+  controller: App\Controller\DownloadController::eraseModalDesigualAll
+  methods: [GET]
+
 EraseFursWomenAll:
   path: /Furs/Women/Delete/All/EraseFursWomenAll
   controller: App\Controller\DownloadController::eraseModalFursWomenAll
@@ -123,8 +141,12 @@ EraseFursWomenAll:
 #destroy
 
 DestroyDoudoune:
-      path: /Doudounes/Delete/destroy/{basename}/{id}/{images_id}
+      path: /Doudounes/Doudounes/Delete/destroy/{basename}/{id}/{images_id}
       controller: App\Controller\DownloadController::destroyDoudoune
+
+DestroyDesigual:
+      path: /Doudounes/Desigual/Delete/destroy/{basename}/{id}/{images_id}
+      controller: App\Controller\DownloadController::destroyDesigual
 
 DestroyWax:
       path: /Wax/Delete/destroy/{basename}/{id}/{images_id}
@@ -153,8 +175,12 @@ DestroyFursMen:
 #destroyAll
 
 DestroyDoudounesAll:
-  path: /Doudounes/Delete/destroy/All
+  path: /Doudounes/Doudounes/Delete/destroy/All
   controller: App\Controller\DownloadController::destroyDoudounesAll
+
+DestroyDesigualAll:
+  path: /Doudounes/Desigual/Delete/destroy/All
+  controller: App\Controller\DownloadController::destroyDesigualAll
 
 DestroyFursWomenAll:
   path: /Furs/Women/Delete/destroy/All

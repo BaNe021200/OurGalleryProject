@@ -55,10 +55,17 @@
 
 
 
-                    <li class="nav-item {% block item0001Active %}{% endblock item0001Active %}">
-                        <a class="nav-link" href="{% block item0001Link %}{{path('Doudounes')}}{% endblock item0001Link%}">{% block item0001 %}Doudounes{% endblock item0001 %}
-<span class="sr-only">(current)</span>
-                        </a>
+                    <li class="dropdown  nav-item {% block item0001Active %}{% endblock %}">
+                        <a class=" dropdown-toggle nav-link" role="link" id="dropdownMenuLink" data-toggle="dropdown"  aria-haspopup="false" aria-expanded="true" href="{{ path('Doudounes') }}">{% block item0001 %}Doudounes{% endblock item0001 %}</a>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="{% block item0001Link %}{{ path('Doudounes') }}{% endblock item0001Link %}">Doudounes</a>
+                            <a class="dropdown-item" href="{% block item0008Link %}{{path('Desigual')}}{% endblock item0008Link %}">Desigual</a>
+
+
+                        </div>
+
+
 
                     </li>
 

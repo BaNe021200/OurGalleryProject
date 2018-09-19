@@ -1,0 +1,36 @@
+{% extends "images/Doudounes/Doudounes.html.twig" %}
+
+{% block updateButtonLink %}{{ path('UpdateDesigual') }}{% endblock %}
+
+
+{% block title %}WomenInFurs{% endblock title %}
+
+
+
+
+
+
+{% block test %}
+
+{% endblock test %}
+
+
+{% block secondarytxt %}Doudounes Desigual <a href="{{ path('EraseDesigualAll') }}"><i class="fas fa-minus-circle" ></i></a>{% endblock secondarytxt %}
+
+
+{% block item %}desigual{% endblock item %}
+
+{% block src %}src="../img/coverDesigual_{{ bg_ramdom3 }}.jpg"{% endblock src %}
+
+
+
+
+{% block levelLinkThumbs %}../{% endblock levelLinkThumbs %}
+{% block levelLinkThumbs2 %}../{% endblock levelLinkThumbs2 %}
+{% block levelLink%}../{% endblock levelLink %}
+
+
+
+{% block eraseItem %}
+    {{ path('EraseDesigual', {'basename':thumb.basename,'id': thumb.getId ,'images_id': thumb.getImagesId } ) }}
+{% endblock %}

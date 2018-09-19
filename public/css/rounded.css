@@ -1,14 +1,14 @@
 .thumbs{
-    border-radius: 50%;
-}
+                                                                                                       border-radius: 50%;
+                                                                                                   }
 
 .thumbs :hover:after{
 
 }
 
 .disabledCross{
-     display: none !important;
- }
+    display: none !important;
+}
 
 
 .visibleCross{
@@ -23,4 +23,9 @@
     justify-content: space-around;
     align-items: center;
     width: 90%;
+}
+
+.fa-minus-circle
+{
+    color:rgba(219,112,147,0.5);
 }

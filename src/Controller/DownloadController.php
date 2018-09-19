@@ -181,6 +181,12 @@ class DownloadController extends Controller
 
     }
 
+    public function updateDesigual()
+    {
+        return $this->update('desigual');
+
+    }
+
     public function updateFurWomen()
     {
         return $this->update('fursWomen');
@@ -233,6 +239,11 @@ class DownloadController extends Controller
     public function eraseModalDoudoune($basename,$id,$images_id)
     {
         return($this->eraseModal('Doudounes',$basename,$id,$images_id));
+    }
+
+    public function eraseModalDesigual($basename,$id,$images_id)
+    {
+        return($this->eraseModal('Desigual',$basename,$id,$images_id));
     }
 
     public function eraseModalWax($basename,$id,$images_id)
@@ -306,6 +317,11 @@ class DownloadController extends Controller
         return($this->destroy('Doudounes',$id,$images_id));
     }
 
+    public function destroyDesigual($id,$images_id)
+    {
+        return($this->destroy('Desigual',$id,$images_id));
+    }
+
     public function destroyWax($id,$images_id)
     {
         return($this->destroy('Wax',$id,$images_id));
@@ -353,6 +369,11 @@ class DownloadController extends Controller
         return $this->eraseModalAll('Doudounes');
     }
 
+    public function eraseModalDesigualAll()
+    {
+        return $this->eraseModalAll('Desigual');
+    }
+
     public function eraseModalFursWomenAll()
     {
         return $this->eraseModalAll('fursWomen');
@@ -397,6 +418,11 @@ class DownloadController extends Controller
     public function destroyDoudounesAll()
     {
         return $this->destroyAll('Doudounes');
+    }
+
+    public function destroyDesigualAll()
+    {
+        return $this->destroyAll('Desigual');
     }
 
     public function destroyFursWomenAll()

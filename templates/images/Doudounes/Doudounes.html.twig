@@ -25,13 +25,13 @@
 
 
 
-{% block secondarytxt %}Doudounes <a href="{{ path('EraseDoudounesAll') }}"><i class="fas fa-minus-circle" style="color: red;"></i></a>{% endblock secondarytxt %}
+{% block secondarytxt %}Doudounes <a href="{{ path('EraseDoudounesAll') }}"><i class="fas fa-minus-circle" ></i></a>{% endblock secondarytxt %}
 
 
 {% block item0001Active %}active{% endblock item0001Active %}
 
 
-{% block src %}src="img/coverDoudounes_{{ bg_ramdom3 }}.jpg"{% endblock src %}
+{% block src %}src="../img/coverDoudounes_{{ bg_ramdom3 }}.jpg"{% endblock src %}
 
 
 {% block thumbnails %}
@@ -45,11 +45,11 @@
          <article class="fold ">
              <div id="divThumb" class="top">
                  <img id="thumb" class="img-fluid img-thumbnail thumbs "
-                      src="{% block levelLinkThumbs %}{% endblock levelLinkThumbs %}{{ thumb.dirname }}{{ thumb.basename }}"
+                      src="{% block levelLinkThumbs %}../{% endblock levelLinkThumbs %}{{ thumb.dirname }}{{ thumb.basename }}"
                       title="{{ thumb.basename }} " alt=""></div>
 
              <h2>
-                 <a href="{% block levelLink %}{% endblock levelLink %}img/{% block item %}doudounes{% endblock item %}/{{ thumb.basename }}"
+                 <a href="{% block levelLink %}../{% endblock levelLink %}img/{% block item %}doudounes{% endblock item %}/{{ thumb.basename }}"
                     rel="zoombox[{% block zoomboxVille %}doudounes{% endblock zoomboxVille %}]"><i class="far fa-eye"
                                                                                                    style="color: #1E90FF; margin-right: 12px; "></i>
 
@@ -67,7 +67,7 @@
              </h2>
              <div class="bot">
                  <img id="thumb" class="img-fluid img-thumbnail thumbs "
-                      src="{% block levelLinkThumbs2 %}{% endblock levelLinkThumbs2 %}{{ thumb.dirname }}{{ thumb.basename }}"
+                      src="{% block levelLinkThumbs2 %}../{% endblock levelLinkThumbs2 %}{{ thumb.dirname }}{{ thumb.basename }}"
                       title="{{ thumb.basename }} " alt="">
              </div>
 
@@ -78,11 +78,13 @@
 {% endblock thumbnails %}
 
 
+{#
 
+{% block levelLinkThumbs %}../{% endblock levelLinkThumbs %}
+{% block levelLinkThumbs2 %}../{% endblock levelLinkThumbs2 %}
+{% block levelLink%}../{% endblock levelLink %}
 
-
-
-
+#}
 
 
 

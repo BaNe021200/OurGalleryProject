@@ -52,6 +52,16 @@ class ImagesController extends Controller
         ]);
     }
 
+    public function Doudounes()
+    {
+        return ($this->item('Doudounes'));
+    }
+
+    public function Desigual()
+    {
+        return ($this->item('Desigual'));
+    }
+
     public function Pulls()
     {
 
@@ -78,11 +88,6 @@ class ImagesController extends Controller
     public function FursMen()
     {
         return ($this->item('fursMen'));
-    }
-
-    public function Doudounes()
-    {
-        return ($this->item('Doudounes'));
     }
 
     public function Wax()
