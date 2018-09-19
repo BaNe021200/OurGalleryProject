@@ -19,6 +19,7 @@ class ImageManager extends Manager
 
     public function destroyImg($images_id)
     {
+
         $this->pdostatement = $this->pdo->prepare('
         DELETE
         FROM images WHERE id = :id ');
@@ -28,4 +29,18 @@ class ImageManager extends Manager
         return $executeIsOk;
 
     }
+
+    public function destroyImgAll($item)
+    {
+        $images = 'img/'.$item ;
+        $this->pdostatement=$this->pdo->prepare('
+        DELETE 
+        FROM images WHERE dirname = :images  
+        ');
+        $this->pdostatement->bindValue(':images',$images,PDO::PARAM_STR);
+        $executeIsOk = $this->pdostatement->execute();
+        return $executeIsOk;
+     }
+
+
 }

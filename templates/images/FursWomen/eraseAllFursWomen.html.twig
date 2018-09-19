@@ -1,5 +1,4 @@
-{% extends "erase.html.twig" %}
-
+{% extends "eraseAll.html.twig" %}
 {% block updateButtonLink %}{{ path('UpdateFursWomen') }}
 {% endblock %}
 
@@ -9,9 +8,13 @@
 {% block levelLinkEraseImageModal %}../{% endblock levelLinkEraseImageModal %}
 
 
+
+
+
+
+
 {% block destroyItem %}
 
-    <a href="{{ path('DestroyFursWomen', {'basename' :basename,'id': id ,'images_id': images_Id } ) }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
+    <a href="{{ path('DestroyFursWomenAll') }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
 
 {% endblock destroyItem %}
-

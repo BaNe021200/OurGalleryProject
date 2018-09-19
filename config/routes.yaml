@@ -103,6 +103,19 @@ EraseFursMen:
      controller: App\Controller\DownloadController::eraseModalFursMen
      methods: [GET]
 
+#eraseAll
+
+EraseFursWomenAll:
+  path: /Furs/Women/Delete/All/EraseFursWomenAll
+
+
+  controller: App\Controller\DownloadController::eraseModalFursWomenAll
+  methods: [GET]
+
+
+
+
+
 #destroy
 
 DestroyDoudoune:
@@ -133,3 +146,8 @@ DestroyFursMen:
       path: /Furs/Men/Delete/destroy/{basename}/{id}/{images_id}
       controller: App\Controller\DownloadController::destroyFursMen
 
+#destroyAll
+
+DestroyFursWomenAll:
+  path: /Furs/Women/Delete/destroy/All
+  controller: App\Controller\DownloadController::destroyFursWomenAll

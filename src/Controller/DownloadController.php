@@ -266,7 +266,7 @@ class DownloadController extends Controller
     }
 
 
-    /*fonction destroy*/
+    /*fonction destroy one*/
 
 
     public function destroy($item,$id,$images_id)
@@ -276,7 +276,7 @@ class DownloadController extends Controller
         $destroyThumb = $tManager->destroyThumb($id);
         if($destroyThumb)
         {
-            $messages[]="La miniature à bien été détruite !</br> ";
+            $messages[]="La miniature a bien été détruite !</br> ";
         }
         else{
             $messages[]="Une erreur a surgit du fond de la nuit. La miniature n'a pu être détruite";
@@ -337,7 +337,61 @@ class DownloadController extends Controller
     }
 
 
+    /* fonction EraseAll*/
+
+    public function eraseModalAll($item)
+    {
+
+        return $this->render('images/'.$item.'/eraseAll'.$item.'.html.twig',[
+            'theme'=> $item
+
+        ]);
+    }
+
+    public function eraseModalFursWomenAll()
+    {
+        return $this->eraseModalAll('fursWomen');
+    }
 
 
+
+    /*Fonction destroy all*/
+
+    public function destroyAll($item)
+    {
+        $messages=[];
+        $tManager = new ThumbnailManager();
+        $destroyThumbs = $tManager->destroyThumbsAll($item);
+        if($destroyThumbs)
+        {
+            $messages[]="Les miniatures ont bien été détruite !</br> ";
+        }
+        else{
+            $messages[]="Une erreur a surgit du fond de la nuit. Les miniatures n'ont pu être détruite";
+        }
+
+        $iManager = new ImageManager();
+        $destroyImgs = $iManager->destroyImgAll($item);
+        if($destroyImgs){
+            $messages[]="Les images ont bien été détruite !";
+        }
+        else{
+            $messages[]="Une erreur a surgit du fond de la nuit. Les images n'ont pu être détruite";
+        }
+
+
+        return $this->render('images/'.$item.'/success'.$item.'.html.twig',[
+            'message' => $messages
+
+        ]);
+
+        /*return $this->render('images/'.$item.'/eraseSuccess'.$item.'.html.twig');*/
+
+    }
+
+    public function destroyFursWomenAll()
+    {
+        return $this->destroyAll('fursWomen');
+    }
 }
 

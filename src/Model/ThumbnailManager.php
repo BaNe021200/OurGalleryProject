@@ -30,7 +30,17 @@ class ThumbnailManager extends Manager
         return $executeIsOk;
 
     }
-
+    public function destroyThumbsAll($item)
+    {
+        $thumbnails = 'img/'.$item.'/thumbs/';
+        $this->pdostatement=$this->pdo->prepare('
+        DELETE 
+        FROM thumbnails WHERE dirname = :thumbs 
+         ');
+        $this->pdostatement->bindValue(':thumbs',$thumbnails,PDO::PARAM_STR);
+        $executeIsOk = $this->pdostatement->execute();
+        return $executeIsOk;
+    }
 
 
 }
