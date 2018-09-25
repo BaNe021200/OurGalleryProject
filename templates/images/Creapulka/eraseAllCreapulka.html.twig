@@ -1,0 +1,20 @@
+{% extends "eraseAll.html.twig" %}
+{% block updateButtonLink %}{{ path('UpdateCreapulka') }}
+{% endblock %}
+
+{% block pathSuccess %}{{path('Creapulka')}}{% endblock %}
+
+{% block eraseThemeItem %}creapulka{% endblock eraseThemeItem %}
+{% block levelLinkEraseImageModal %}../{% endblock levelLinkEraseImageModal %}
+
+
+
+
+
+
+
+{% block destroyItem %}
+
+    <a href="{{ path('DestroyCreapulkaAll') }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
+
+{% endblock destroyItem %}

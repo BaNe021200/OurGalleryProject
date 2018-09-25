@@ -376,8 +376,36 @@ class DownloadController extends Controller
 
     public function eraseModalFursWomenAll()
     {
-        return $this->eraseModalAll('fursWomen');
+        return $this->eraseModalAll('FursWomen');
     }
+
+    public function eraseModalFursMenAll()
+    {
+        return $this->eraseModalAll('FursMen');
+    }
+
+    public function eraseModalPullsAll()
+    {
+        return $this->eraseModalAll('Pulls');
+    }
+
+    public function eraseModalCreapulkaAll()
+    {
+        return $this->eraseModalAll('Creapulka');
+    }
+
+    public function eraseModalDelicious_SevAll()
+    {
+        return $this->eraseModalAll('Delicious_Sev');
+    }
+
+    public function eraseModalWaxAll()
+    {
+        return $this->eraseModalAll('Wax');
+    }
+
+
+
 
 
 
@@ -427,7 +455,33 @@ class DownloadController extends Controller
 
     public function destroyFursWomenAll()
     {
-        return $this->destroyAll('fursWomen');
+        return $this->destroyAll('FursWomen');
     }
+
+    public function destroyFursMenAll()
+    {
+        return $this->destroyAll('FursMen');
+    }
+
+
+    public function destroyPullsAll()
+    {
+        return $this->destroyAll('Pulls');
+    }
+
+    public function destroyCreapulkaAll()
+{
+    return $this->destroyAll('Creapulka');
+}
+
+    public function destroyDelicious_SevAll()
+{
+    return $this->destroyAll('Delicious_Sev');
+}
+
+    public function destroyWaxAll()
+{
+    return $this->destroyAll('Wax');
+}
 }
 

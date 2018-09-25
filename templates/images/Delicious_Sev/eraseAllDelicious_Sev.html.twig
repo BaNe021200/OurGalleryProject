@@ -1,0 +1,20 @@
+{% extends "eraseAll.html.twig" %}
+{% block updateButtonLink %}{{ path('UpdateDelicious_Sev') }}
+{% endblock %}
+
+{% block pathSuccess %}{{path('Delicious_Sev')}}{% endblock %}
+
+{% block eraseThemeItem %}delicious_sev{% endblock eraseThemeItem %}
+{% block levelLinkEraseImageModal %}../{% endblock levelLinkEraseImageModal %}
+
+
+
+
+
+
+
+{% block destroyItem %}
+
+    <a href="{{ path('DestroyDelicious_SevAll') }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
+
+{% endblock destroyItem %}

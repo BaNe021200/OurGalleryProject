@@ -26,11 +26,11 @@ Pulls:
     controller: App\Controller\ImagesController::Pulls
 
 Creapulka:
-    path: /Pull/Creapulka
+    path: /Pulls/Creapulka
     controller: App\Controller\ImagesController::Creapulka
 
 Delicious_Sev:
-    path: /Pull/Delicious_Sev
+    path: /Pulls/Delicious_Sev
     controller: App\Controller\ImagesController::Delicious_Sev
 
 Wax:
@@ -70,7 +70,7 @@ UpdateDelicious_Sev:
     controller: App\Controller\DownloadController::updateDelicious_Sev
 
 UpdateWax:
-    path: /Pulls/Wax/Update
+    path: /Wax/Update
     controller: App\Controller\DownloadController::updateWax
 
 # Erase
@@ -92,7 +92,7 @@ EraseWax:
      methods: [GET]
 
 ErasePulls:
-     path: /Pulls/Delete/{basename}/{id}/{images_id}
+     path: /Pulls/Pulls/Delete/{basename}/{id}/{images_id}
      controller: App\Controller\DownloadController::eraseModalPulls
      methods: [GET]
 
@@ -119,18 +119,43 @@ EraseFursMen:
 #eraseAll
 
 EraseDoudounesAll:
-  path: /Doudounes/Delete/All/EraseDoudounesAll
+  path: /Doudounes/Doudounes/Delete/All/EraseDoudounesAll
   controller: App\Controller\DownloadController::eraseModalDoudounesAll
   methods: [GET]
 
 EraseDesigualAll:
-  path: /Doudounes/Delete/All/EraseDesigualAll
+  path: /Doudounes/Desigual/Delete/All/EraseDesigualAll
   controller: App\Controller\DownloadController::eraseModalDesigualAll
   methods: [GET]
 
 EraseFursWomenAll:
   path: /Furs/Women/Delete/All/EraseFursWomenAll
   controller: App\Controller\DownloadController::eraseModalFursWomenAll
+  methods: [GET]
+
+EraseFursMenAll:
+  path: /Furs/Men/Delete/All/EraseFursMenAll
+  controller: App\Controller\DownloadController::eraseModalFursMenAll
+  methods: [GET]
+
+ErasePullsAll:
+  path: /Pulls/Pulls/Delete/All/ErasePullsAll
+  controller: App\Controller\DownloadController::eraseModalPullsAll
+  methods: [GET]
+
+EraseCreapulkaAll:
+  path: /Pulls/Creapulka/Delete/All/EraseCreapulkaAll
+  controller: App\Controller\DownloadController::eraseModalCreapulkaAll
+  methods: [GET]
+
+EraseDelicious_SevAll:
+  path: /Pulls/Delicious_Sev/Delete/All/EraseDelicious_SevAll
+  controller: App\Controller\DownloadController::eraseModalDelicious_SevAll
+  methods: [GET]
+
+EraseWaxAll:
+  path: /Wax/Delete/All/EraseWaxAll
+  controller: App\Controller\DownloadController::eraseModalWaxAll
   methods: [GET]
 
 
@@ -185,3 +210,23 @@ DestroyDesigualAll:
 DestroyFursWomenAll:
   path: /Furs/Women/Delete/destroy/All
   controller: App\Controller\DownloadController::destroyFursWomenAll
+
+DestroyFursMenAll:
+  path: /Furs/Men/Delete/destroy/All
+  controller: App\Controller\DownloadController::destroyFursMenAll
+
+DestroyPullsAll:
+  path: /Pulls/Pulls/Delete/destroy/All
+  controller: App\Controller\DownloadController::destroyPullsAll
+
+DestroyCreapulkaAll:
+  path: /Pulls/Creapulka/Delete/destroy/All
+  controller: App\Controller\DownloadController::destroyCreapulkaAll
+
+DestroyDelicious_SevAll:
+  path: /Pulls/Delicious_Sev/Delete/destroy/All
+  controller: App\Controller\DownloadController::destroyDelicious_SevAll
+
+DestroyWaxAll:
+  path: /Wax/Delete/destroy/All
+  controller: App\Controller\DownloadController::destroyWaxAll

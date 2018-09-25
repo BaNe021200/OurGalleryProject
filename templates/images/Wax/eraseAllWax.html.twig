@@ -1,0 +1,20 @@
+{% extends "eraseAll.html.twig" %}
+{% block updateButtonLink %}{{ path('UpdateWax') }}
+{% endblock %}
+
+{% block pathSuccess %}{{path('Wax')}}{% endblock %}
+
+{% block eraseThemeItem %}wax{% endblock eraseThemeItem %}
+
+
+
+
+
+
+
+
+{% block destroyItem %}
+
+    <a href="{{ path('DestroyWaxAll') }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
+
+{% endblock destroyItem %}

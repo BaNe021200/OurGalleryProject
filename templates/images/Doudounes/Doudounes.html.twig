@@ -25,7 +25,10 @@
 
 
 
-{% block secondarytxt %}Doudounes <a href="{{ path('EraseDoudounesAll') }}"><i class="fas fa-minus-circle" ></i></a>{% endblock secondarytxt %}
+{% block secondarytxt %}Doudounes{% endblock secondarytxt %}
+{% block pathEraseAll %}{{ path('EraseDoudounesAll') }}{% endblock %}
+
+
 
 
 {% block item0001Active %}active{% endblock item0001Active %}
