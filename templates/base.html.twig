@@ -16,7 +16,7 @@
 
         <!-- Custom styles for this template -->
         <link href="{{ asset('theme/css/portfolio-item.css') }}" rel="stylesheet">
-
+        <link rel="stylesheet" href="{{ asset('css/navigation.css') }}">
     {% endblock stylesheet %}
 </head>
 {% block test %}
@@ -282,7 +282,7 @@
 
             </div>
             <!-- /.row -->
-    <div>
+    <div id="pagination" class="text-center">
     {{ knp_pagination_render(thumbs, null, {}, {
         'position': 'centered',
         'size': 'medium',

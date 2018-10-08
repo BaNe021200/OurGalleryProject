@@ -85,7 +85,7 @@ class ImagesController extends Controller
         $paginator = $this->get('knp_paginator');
 
 
-        $thumbs = $paginator->paginate($thumbsQuery, $request->query->getInt('page',1),12
+        $thumbs = $paginator->paginate($thumbsQuery, $request->query->getInt('page',1),16
 
 
         );
