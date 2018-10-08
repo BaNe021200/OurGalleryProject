@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Thumbnails;
 use App\Entity\Images;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Controller\DownloadController;
@@ -17,15 +19,55 @@ class ImagesController extends Controller
 
 
 
-    public function index()
+    public function index(Request $request)
     {
-        return $this->render('images/Doudounes/Doudounes.html.twig', [
-            'controller_name' => 'ImagesController',
+
+        $dir = 'img/doudounes/thumbs/';
+
+
+        $bg_ramdom2 = mt_rand(1, 2);
+        $bg_ramdom3 = mt_rand(1, 3);
+        $bg_ramdom6 = mt_rand(1, 6);
+
+        $em = $this->getDoctrine()->getManager();
+
+        $thumbsQuery= $em->getRepository(Thumbnails::class)
+
+            ->findByDirname($dir);
+
+        $paginator = $this->get('knp_paginator');
+
+
+        $thumbs = $paginator->paginate($thumbsQuery, $request->query->getInt('page',1),12
+
+
+        );
+
+
+
+        /*$thumbs = $this->getDoctrine()
+            ->getRepository(Thumbnails::class)
+            ->findByDirname($dir);*/
+
+
+
+
+        return $this->render('images/Doudounes/Doudounes.html.twig',[
+
+            'thumbs' => $thumbs,
+            'bg_ramdom' => $bg_ramdom2,
+            'bg_ramdom3' => $bg_ramdom3,
+            'bg_ramdom6' =>$bg_ramdom6,
+
+
         ]);
+
+
     }
 
-    public function item($item)
+    public function item($item, Request $request)
     {
+
 
         $dir = 'img/'.$item.'/thumbs/';
 
@@ -34,9 +76,25 @@ class ImagesController extends Controller
         $bg_ramdom3 = mt_rand(1, 3);
         $bg_ramdom6 = mt_rand(1, 6);
 
-        $thumbs = $this->getDoctrine()
-            ->getRepository(Thumbnails::class)
+        $em = $this->getDoctrine()->getManager();
+
+        $thumbsQuery= $em->getRepository(Thumbnails::class)
+
             ->findByDirname($dir);
+
+        $paginator = $this->get('knp_paginator');
+
+
+        $thumbs = $paginator->paginate($thumbsQuery, $request->query->getInt('page',1),12
+
+
+        );
+
+
+
+        /*$thumbs = $this->getDoctrine()
+            ->getRepository(Thumbnails::class)
+            ->findByDirname($dir);*/
 
 
 
@@ -52,47 +110,47 @@ class ImagesController extends Controller
         ]);
     }
 
-    public function Doudounes()
+    public function Doudounes(Request $request)
     {
-        return ($this->item('Doudounes'));
+        return ($this->item('Doudounes', $request));
     }
 
-    public function Desigual()
+    public function Desigual(Request $request)
     {
-        return ($this->item('Desigual'));
+        return ($this->item('Desigual',$request));
     }
 
-    public function Pulls()
+    public function Pulls(Request $request)
     {
 
-        return ($this->item('Pulls'));
+        return ($this->item('Pulls',$request));
     }
 
-    public function Creapulka()
+    public function Creapulka(Request $request)
     {
 
-        return ($this->item('Creapulka'));
+        return ($this->item('Creapulka',$request));
     }
 
-    public function Delicious_Sev()
+    public function Delicious_Sev(Request $request)
     {
 
         return ($this->item('Delicious_Sev'));
     }
 
-    public function FursWomen()
+    public function FursWomen(Request $request)
     {
-        return ($this->item('fursWomen'));
+        return ($this->item('fursWomen',$request));
     }
 
-    public function FursMen()
+    public function FursMen(Request $request)
     {
-        return ($this->item('fursMen'));
+        return ($this->item('fursMen',$request));
     }
 
-    public function Wax()
+    public function Wax(Request $request)
     {
-        return ($this->item('Wax'));
+        return ($this->item('Wax',$request));
     }
 
     public function openExplo($item)

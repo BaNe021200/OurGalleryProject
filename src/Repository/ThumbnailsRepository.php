@@ -57,6 +57,10 @@ class ThumbnailsRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
         ;
+
+
+
+
     }
 
 
