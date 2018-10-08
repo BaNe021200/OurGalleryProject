@@ -283,7 +283,11 @@
             </div>
             <!-- /.row -->
     <div>
-        {{ knp_pagination_render(thumbs) }}
+    {{ knp_pagination_render(thumbs, null, {}, {
+        'position': 'centered',
+        'size': 'medium',
+        'rounded': true,
+    }) }}
     </div>
 
 
