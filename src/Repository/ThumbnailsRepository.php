@@ -25,22 +25,15 @@ class ThumbnailsRepository extends ServiceEntityRepository
 
     public function findByDirname($dirname)
     {
-        /*return $this->createQueryBuilder('query')
+        return $this->createQueryBuilder('query')
             ->andWhere('query.dirname = :dir')
             ->setParameter('dir', $dirname)
             ->orderBy('query.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
-        ;*/
-        $conn = $this->getEntityManager()->getConnection();
-        $sql= '
-            SELECT *
-            FROM thumbnails query
-            ';
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
-        return $stmt->fetchAll();
+        ;
+
 
 
 
