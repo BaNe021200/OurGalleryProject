@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
 
@@ -56,10 +56,10 @@
 
 
                     <li class="dropdown  nav-item {% block item0001Active %}{% endblock %}">
-                        <a class=" dropdown-toggle nav-link" role="link" id="dropdownMenuLink" data-toggle="dropdown"  aria-haspopup="false" aria-expanded="true" href="{{ path('Doudounes') }}">{% block item0001 %}Doudounes{% endblock item0001 %}</a>
+                        <a class=" dropdown-toggle nav-link" role="link" id="dropdownMenuLink" data-toggle="dropdown"  aria-haspopup="false" aria-expanded="true" href="{{ path('doudounes') }}">{% block item0001 %}Doudounes{% endblock item0001 %}</a>
 
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="{% block item0001Link %}{{ path('Doudounes') }}{% endblock item0001Link %}">Doudounes</a>
+                            <a class="dropdown-item" href="{% block item0001Link %}{{ path('doudounes') }}{% endblock item0001Link %}">Doudounes</a>
                             <a class="dropdown-item" href="{% block item0008Link %}{{path('Desigual')}}{% endblock item0008Link %}">Desigual</a>
 
 
@@ -286,7 +286,7 @@
     {{ knp_pagination_render(thumbs, null, {}, {
         'position': 'centered',
         'size': 'medium',
-        'rounded': true,
+        'rounded': false,
     }) }}
     </div>
 

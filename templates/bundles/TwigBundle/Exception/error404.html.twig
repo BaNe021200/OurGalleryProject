@@ -1,0 +1,15 @@
+{% extends "images/doudounes/doudounes.html.twig" %}
+
+{% block title %}
+    Erreur {{ status_code }}
+{% endblock title %}
+
+{% block main %}
+    <div class="page-404">
+    <h1>Ooops... Vous êtes perdu...</h1>
+    <p><img src="{{ asset('img/doudounes/Pinterest_Doudounes_000002.jpg') }}" alt="doudoune0002"></p>
+    <a href="{{ path('doudounes') }}" class="btn btn-secondary">
+        Back home
+    </a>
+    </div>{#https://i.gifer.com/7iJU.gif#}
+{% endblock main %}

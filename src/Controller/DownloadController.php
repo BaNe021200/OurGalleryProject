@@ -238,7 +238,7 @@ class DownloadController extends Controller
 
     public function eraseModalDoudoune($basename,$id,$images_id)
     {
-        return($this->eraseModal('Doudounes',$basename,$id,$images_id));
+        return($this->eraseModal('doudounes',$basename,$id,$images_id));
     }
 
     public function eraseModalDesigual($basename,$id,$images_id)
@@ -314,7 +314,7 @@ class DownloadController extends Controller
 
     public function destroyDoudoune($id,$images_id)
     {
-        return($this->destroy('Doudounes',$id,$images_id));
+        return($this->destroy('doudounes',$id,$images_id));
     }
 
     public function destroyDesigual($id,$images_id)
@@ -366,7 +366,7 @@ class DownloadController extends Controller
 
     public function eraseModalDoudounesAll()
     {
-        return $this->eraseModalAll('Doudounes');
+        return $this->eraseModalAll('doudounes');
     }
 
     public function eraseModalDesigualAll()
@@ -445,7 +445,7 @@ class DownloadController extends Controller
 
     public function destroyDoudounesAll()
     {
-        return $this->destroyAll('Doudounes');
+        return $this->destroyAll('doudounes');
     }
 
     public function destroyDesigualAll()

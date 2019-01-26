@@ -52,7 +52,7 @@ class ImagesController extends Controller
 
 
 
-        return $this->render('images/Doudounes/Doudounes.html.twig',[
+        return $this->render('doudounes.html.twig',[
 
             'thumbs' => $thumbs,
             'bg_ramdom' => $bg_ramdom2,
@@ -112,7 +112,7 @@ class ImagesController extends Controller
 
     public function Doudounes(Request $request)
     {
-        return ($this->item('Doudounes', $request));
+        return ($this->item('doudounes', $request));
     }
 
     public function Desigual(Request $request)

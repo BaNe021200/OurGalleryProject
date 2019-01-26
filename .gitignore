@@ -14,3 +14,8 @@
 /public/theme/
 /public/zoombox/
 /public/zoombox2/
+
+###> symfony/phpunit-bridge ###
+.phpunit
+/phpunit.xml
+###< symfony/phpunit-bridge ###
